@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="language key     1C 1c   ActionScript actionscript   Apache apache   AppleScript applescript   AsciiDoc asciidoc   AspectJ asciidoc   AutoHotkey autohotkey   AVR Assembler avrasm   Axapta axapta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="markdown-highlight">
+<meta property="og:url" content="http://github.com/2018/09/28/markdown-highlight/index.html">
+<meta property="og:site_name" content="sunner&#39;s site">
+<meta property="og:description" content="language key     1C 1c   ActionScript actionscript   Apache apache   AppleScript applescript   AsciiDoc asciidoc   AspectJ asciidoc   AutoHotkey autohotkey   AVR Assembler avrasm   Axapta axapta">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-12-05T04:38:51.106Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="markdown-highlight">
+<meta name="twitter:description" content="language key     1C 1c   ActionScript actionscript   Apache apache   AppleScript applescript   AsciiDoc asciidoc   AspectJ asciidoc   AutoHotkey autohotkey   AVR Assembler avrasm   Axapta axapta">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>markdown-highlight</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/10/13/博客搭建/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/08/05/associations/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://github.com/2018/09/28/markdown-highlight/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://github.com/2018/09/28/markdown-highlight/&text=markdown-highlight"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/2018/09/28/markdown-highlight/&is_video=false&description=markdown-highlight"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=markdown-highlight&body=Check out this article: http://github.com/2018/09/28/markdown-highlight/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://github.com/2018/09/28/markdown-highlight/&name=markdown-highlight&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        markdown-highlight
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">sunner's site</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-09-28T04:38:10.000Z" itemprop="datePublished">2018-09-28</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <table>
+<thead>
+<tr>
+<th>language</th>
+<th>key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1C</td>
+<td>1c</td>
+</tr>
+<tr>
+<td>ActionScript</td>
+<td>actionscript</td>
+</tr>
+<tr>
+<td>Apache</td>
+<td>apache</td>
+</tr>
+<tr>
+<td>AppleScript</td>
+<td>applescript</td>
+</tr>
+<tr>
+<td>AsciiDoc</td>
+<td>asciidoc</td>
+</tr>
+<tr>
+<td>AspectJ</td>
+<td>asciidoc</td>
+</tr>
+<tr>
+<td>AutoHotkey</td>
+<td>autohotkey</td>
+</tr>
+<tr>
+<td>AVR Assembler</td>
+<td>avrasm</td>
+</tr>
+<tr>
+<td>Axapta</td>
+<td>axapta</td>
+</tr>
+<tr>
+<td>Bash</td>
+<td>bash</td>
+</tr>
+<tr>
+<td>BrainFuck</td>
+<td>brainfuck</td>
+</tr>
+<tr>
+<td>Cap’n Proto</td>
+<td>capnproto</td>
+</tr>
+<tr>
+<td>Clojure REPL</td>
+<td>clojure</td>
+</tr>
+<tr>
+<td>Clojure</td>
+<td>clojure</td>
+</tr>
+<tr>
+<td>CMake</td>
+<td>cmake</td>
+</tr>
+<tr>
+<td>CoffeeScript</td>
+<td>coffeescript</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>cpp</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>cs</td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>css</td>
+</tr>
+<tr>
+<td>D</td>
+<td>d</td>
+</tr>
+<tr>
+<td>Dart</td>
+<td>d</td>
+</tr>
+<tr>
+<td>Delphi</td>
+<td>delphi</td>
+</tr>
+<tr>
+<td>Diff</td>
+<td>diff</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>django</td>
+</tr>
+<tr>
+<td>DOS.bat</td>
+<td>dos</td>
+</tr>
+<tr>
+<td>Dust</td>
+<td>dust</td>
+</tr>
+<tr>
+<td>Elixir</td>
+<td>elixir</td>
+</tr>
+<tr>
+<td>ERB(Embedded Ruby)</td>
+<td>erb</td>
+</tr>
+<tr>
+<td>Erlang REPL</td>
+<td>erlang-repl</td>
+</tr>
+<tr>
+<td>Erlang</td>
+<td>erlang</td>
+</tr>
+<tr>
+<td>FIX</td>
+<td>fix</td>
+</tr>
+<tr>
+<td>F#</td>
+<td>fsharp</td>
+</tr>
+<tr>
+<td>G-code(ISO 6983)</td>
+<td>gcode</td>
+</tr>
+<tr>
+<td>Gherkin</td>
+<td>gherkin</td>
+</tr>
+<tr>
+<td>GLSL</td>
+<td>glsl</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>go</td>
+</tr>
+<tr>
+<td>Gradle</td>
+<td>gradle</td>
+</tr>
+<tr>
+<td>Groovy</td>
+<td>groovy</td>
+</tr>
+<tr>
+<td>Haml</td>
+<td>haml</td>
+</tr>
+<tr>
+<td>Handlebars</td>
+<td>handlebars</td>
+</tr>
+<tr>
+<td>Haskell</td>
+<td>haskell</td>
+</tr>
+<tr>
+<td>Haxe</td>
+<td>haxe</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>html</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>http</td>
+</tr>
+<tr>
+<td>Ini file</td>
+<td>ini</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>java</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>javascript</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>json</td>
+</tr>
+<tr>
+<td>Lasso</td>
+<td>lasso</td>
+</tr>
+<tr>
+<td>Less</td>
+<td>less</td>
+</tr>
+<tr>
+<td>Lisp</td>
+<td>lisp</td>
+</tr>
+<tr>
+<td>LiveCode</td>
+<td>livecodeserver</td>
+</tr>
+<tr>
+<td>LiveScript</td>
+<td>livescript</td>
+</tr>
+<tr>
+<td>Lua</td>
+<td>lua</td>
+</tr>
+<tr>
+<td>Makefile</td>
+<td>makefile</td>
+</tr>
+<tr>
+<td>Markdown</td>
+<td>markdown</td>
+</tr>
+<tr>
+<td>Mathematica</td>
+<td>mathematica</td>
+</tr>
+<tr>
+<td>Matlab</td>
+<td>matlab</td>
+</tr>
+<tr>
+<td>MEL (Maya Embedded Language)</td>
+<td>mel</td>
+</tr>
+<tr>
+<td>Mercury</td>
+<td>mercury</td>
+</tr>
+<tr>
+<td>Mizar</td>
+<td>mizar</td>
+</tr>
+<tr>
+<td>Monkey</td>
+<td>monkey</td>
+</tr>
+<tr>
+<td>Nginx</td>
+<td>nginx</td>
+</tr>
+<tr>
+<td>Nimrod</td>
+<td>nimrod</td>
+</tr>
+<tr>
+<td>Nix</td>
+<td>nix</td>
+</tr>
+<tr>
+<td>NSIS</td>
+<td>nsis</td>
+</tr>
+<tr>
+<td>Objective C</td>
+<td>objectivec</td>
+</tr>
+<tr>
+<td>OCaml</td>
+<td>ocaml</td>
+</tr>
+<tr>
+<td>Oxygene</td>
+<td>oxygene</td>
+</tr>
+<tr>
+<td>Parser 3</td>
+<td>parser3</td>
+</tr>
+<tr>
+<td>Perl</td>
+<td>perl</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>php</td>
+</tr>
+<tr>
+<td>PowerShell</td>
+<td>powershell</td>
+</tr>
+<tr>
+<td>Processing</td>
+<td>processing</td>
+</tr>
+<tr>
+<td>Python’s profiler output</td>
+<td>profile</td>
+</tr>
+<tr>
+<td>Protocol Buffers</td>
+<td>protobuf</td>
+</tr>
+<tr>
+<td>Puppet</td>
+<td>puppet</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>python</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>q</td>
+</tr>
+<tr>
+<td>R</td>
+<td>r</td>
+</tr>
+<tr>
+<td>RenderMan RIB</td>
+<td>rib</td>
+</tr>
+<tr>
+<td>Roboconf</td>
+<td>roboconf</td>
+</tr>
+<tr>
+<td>RenderMan RSL</td>
+<td>rsl</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td>ruby</td>
+</tr>
+<tr>
+<td>Oracle Rules Language</td>
+<td>ruleslanguage</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>rust</td>
+</tr>
+<tr>
+<td>Scala</td>
+<td>scala</td>
+</tr>
+<tr>
+<td>Scheme</td>
+<td>scheme</td>
+</tr>
+<tr>
+<td>Scilab</td>
+<td>scilab</td>
+</tr>
+<tr>
+<td>SCSS</td>
+<td>scss</td>
+</tr>
+<tr>
+<td>Smali</td>
+<td>smali</td>
+</tr>
+<tr>
+<td>SmallTalk</td>
+<td>smalltalk</td>
+</tr>
+<tr>
+<td>SML</td>
+<td>sml</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>sql</td>
+</tr>
+<tr>
+<td>Stata</td>
+<td>stata</td>
+</tr>
+<tr>
+<td>STEP Part21(ISO 10303-21)</td>
+<td>step21</td>
+</tr>
+<tr>
+<td>Stylus</td>
+<td>stylus</td>
+</tr>
+<tr>
+<td>Swift</td>
+<td>swift</td>
+</tr>
+<tr>
+<td>Tcl</td>
+<td>tcl</td>
+</tr>
+<tr>
+<td>Tex</td>
+<td>tex</td>
+</tr>
+<tr>
+<td>text</td>
+<td>text/plain</td>
+</tr>
+<tr>
+<td>Thrift</td>
+<td>thrift</td>
+</tr>
+<tr>
+<td>Twig</td>
+<td>twig</td>
+</tr>
+<tr>
+<td>TypeScript</td>
+<td>typescript</td>
+</tr>
+<tr>
+<td>Vala</td>
+<td>vala</td>
+</tr>
+<tr>
+<td>VB.NET</td>
+<td>vbnet</td>
+</tr>
+<tr>
+<td>VBScript in HTML</td>
+<td>vbscript-html</td>
+</tr>
+<tr>
+<td>VBScript</td>
+<td>vbscript</td>
+</tr>
+<tr>
+<td>Verilog</td>
+<td>verilog</td>
+</tr>
+<tr>
+<td>VHDL</td>
+<td>vhdl</td>
+</tr>
+<tr>
+<td>Vim Script</td>
+<td>vim</td>
+</tr>
+<tr>
+<td>Intel x86 Assembly</td>
+<td>x86asm</td>
+</tr>
+<tr>
+<td>XL</td>
+<td>xl</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>xml</td>
+</tr>
+<tr>
+<td>YAML</td>
+<td>yml</td>
+</tr>
+</tbody>
+</table>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://github.com/2018/09/28/markdown-highlight/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://github.com/2018/09/28/markdown-highlight/&text=markdown-highlight"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/2018/09/28/markdown-highlight/&is_video=false&description=markdown-highlight"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=markdown-highlight&body=Check out this article: http://github.com/2018/09/28/markdown-highlight/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://github.com/2018/09/28/markdown-highlight/&title=markdown-highlight"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://github.com/2018/09/28/markdown-highlight/&name=markdown-highlight&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 sunner
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="一个线程对应一个autorelease_thread_vars123456789101112131415161718typedef struct autorelease_thread_vars&amp;#123;  /* The current, default NSAutoreleasePool for the calling thread;     the one that will hold ob">
+<meta property="og:type" content="article">
+<meta property="og:title" content="autoreleasePoll">
+<meta property="og:url" content="http://github.com/2018/06/05/autoreleasePoll/index.html">
+<meta property="og:site_name" content="sunner&#39;s site">
+<meta property="og:description" content="一个线程对应一个autorelease_thread_vars123456789101112131415161718typedef struct autorelease_thread_vars&amp;#123;  /* The current, default NSAutoreleasePool for the calling thread;     the one that will hold ob">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://github.com/2018/06/05/autoreleasePoll/autoreleasePoll.png">
+<meta property="og:updated_time" content="2018-12-05T04:35:07.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="autoreleasePoll">
+<meta name="twitter:description" content="一个线程对应一个autorelease_thread_vars123456789101112131415161718typedef struct autorelease_thread_vars&amp;#123;  /* The current, default NSAutoreleasePool for the calling thread;     the one that will hold ob">
+<meta name="twitter:image" content="http://github.com/2018/06/05/autoreleasePoll/autoreleasePoll.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>autoreleasePoll</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/07/05/runtime/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/05/05/引用计数/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://github.com/2018/06/05/autoreleasePoll/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://github.com/2018/06/05/autoreleasePoll/&text=autoreleasePoll"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/2018/06/05/autoreleasePoll/&is_video=false&description=autoreleasePoll"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=autoreleasePoll&body=Check out this article: http://github.com/2018/06/05/autoreleasePoll/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://github.com/2018/06/05/autoreleasePoll/&name=autoreleasePoll&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        autoreleasePoll
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">sunner's site</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-06-05T03:11:00.000Z" itemprop="datePublished">2018-06-05</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><img src="/2018/06/05/autoreleasePoll/autoreleasePoll.png" alt=""></p>
+<p>一个线程对应一个autorelease_thread_vars<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> autorelease_thread_vars</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">/* The current, default NSAutoreleasePool for the calling thread;</span></span><br><span class="line"><span class="comment">     the one that will hold objects that are arguments to</span></span><br><span class="line"><span class="comment">     [NSAutoreleasePool +addObject:]. */</span></span><br><span class="line">  __<span class="keyword">unsafe_unretained</span> <span class="built_in">NSAutoreleasePool</span> *current_pool;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* The total number of objects autoreleased since the thread was</span></span><br><span class="line"><span class="comment">     started, or since -resetTotalAutoreleasedObjects was called</span></span><br><span class="line"><span class="comment">     in this thread. (if compiled in) */</span></span><br><span class="line">  <span class="keyword">unsigned</span> total_objects_count;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* A cache of NSAutoreleasePool's already alloc'ed.  Caching old pools</span></span><br><span class="line"><span class="comment">     instead of deallocating and re-allocating them will save time. */</span></span><br><span class="line">  __<span class="keyword">unsafe_unretained</span> <span class="keyword">id</span> *pool_cache;</span><br><span class="line">  <span class="keyword">int</span> pool_cache_size;</span><br><span class="line">  <span class="keyword">int</span> pool_cache_count;</span><br><span class="line">&#125; thread_vars_struct;</span><br></pre></td></tr></table></figure></p>
+<p>autoreleasePoll<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSAutoreleasePool</span> : <span class="title">NSObject</span> </span></span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#if	GS_EXPOSE(NSAutoreleasePool) &amp;&amp; !__has_feature(objc_arc)</span></span><br><span class="line">  <span class="comment">/* For re-setting the current pool when we are dealloc'ed. */</span></span><br><span class="line">  <span class="built_in">NSAutoreleasePool</span> *_parent;</span><br><span class="line">  <span class="comment">/* This pointer to our child pool is  necessary for co-existing</span></span><br><span class="line"><span class="comment">     with exceptions. */</span></span><br><span class="line">  <span class="built_in">NSAutoreleasePool</span> *_child;</span><br><span class="line">  <span class="comment">/* A collection of the objects to be released. */</span></span><br><span class="line">  <span class="keyword">struct</span> autorelease_array_list *_released;</span><br><span class="line">  <span class="keyword">struct</span> autorelease_array_list *_released_head;</span><br><span class="line">  <span class="comment">/* The total number of objects autoreleased in this pool. */</span></span><br><span class="line">  <span class="keyword">unsigned</span> _released_count;</span><br><span class="line">  <span class="comment">/* The method to add an object to this pool */</span></span><br><span class="line">  <span class="keyword">void</span> 	(*_addImp)(<span class="keyword">id</span>, SEL, <span class="keyword">id</span>);</span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line"><span class="meta">#if     GS_NONFRAGILE</span></span><br><span class="line"><span class="meta">#else</span></span><br><span class="line">  <span class="comment">/* Pointer to private additional data used to avoid breaking ABI</span></span><br><span class="line"><span class="comment">   * when we don't have the non-fragile ABI available.</span></span><br><span class="line"><span class="comment">   * Use this mechanism rather than changing the instance variable</span></span><br><span class="line"><span class="comment">   * layout (see Source/GSInternal.h for details).</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">@private</span> <span class="keyword">id</span> _internal GS_UNUSED_IVAR;</span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://github.com/2018/06/05/autoreleasePoll/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://github.com/2018/06/05/autoreleasePoll/&text=autoreleasePoll"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/2018/06/05/autoreleasePoll/&is_video=false&description=autoreleasePoll"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=autoreleasePoll&body=Check out this article: http://github.com/2018/06/05/autoreleasePoll/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://github.com/2018/06/05/autoreleasePoll/&title=autoreleasePoll"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://github.com/2018/06/05/autoreleasePoll/&name=autoreleasePoll&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 sunner
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+

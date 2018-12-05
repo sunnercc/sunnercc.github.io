@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="创建一个父视图(fatherView)， 一个子视图(sonView) 123456789let fatherView = UIView()fatherView.frame = CGRect(x: 30, y: 30, width: 200, height: 200)fatherView.backgroundColor = .redself.view.addSubview(fatherView)l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="frame&amp;bounds">
+<meta property="og:url" content="http://github.com/2016/10/05/frame-bounds/index.html">
+<meta property="og:site_name" content="sunner&#39;s site">
+<meta property="og:description" content="创建一个父视图(fatherView)， 一个子视图(sonView) 123456789let fatherView = UIView()fatherView.frame = CGRect(x: 30, y: 30, width: 200, height: 200)fatherView.backgroundColor = .redself.view.addSubview(fatherView)l">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://github.com/2016/10/05/frame-bounds/frame-bounds0.png">
+<meta property="og:image" content="http://github.com/2016/10/05/frame-bounds/frame-bounds1.png">
+<meta property="og:image" content="http://github.com/2016/10/05/frame-bounds/frame-bounds2.png">
+<meta property="og:image" content="http://github.com/2016/10/05/frame-bounds/frame-bounds3.png">
+<meta property="og:updated_time" content="2018-12-05T04:31:47.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="frame&amp;bounds">
+<meta name="twitter:description" content="创建一个父视图(fatherView)， 一个子视图(sonView) 123456789let fatherView = UIView()fatherView.frame = CGRect(x: 30, y: 30, width: 200, height: 200)fatherView.backgroundColor = .redself.view.addSubview(fatherView)l">
+<meta name="twitter:image" content="http://github.com/2016/10/05/frame-bounds/frame-bounds0.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>frame&amp;bounds</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/03/05/京东和喜马拉雅面试题目/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/08/05/copy-mutableCopy/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://github.com/2016/10/05/frame-bounds/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://github.com/2016/10/05/frame-bounds/&text=frame&amp;bounds"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/2016/10/05/frame-bounds/&is_video=false&description=frame&amp;bounds"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=frame&amp;bounds&body=Check out this article: http://github.com/2016/10/05/frame-bounds/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://github.com/2016/10/05/frame-bounds/&name=frame&amp;bounds&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        frame&amp;bounds
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">sunner's site</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-10-05T03:11:45.000Z" itemprop="datePublished">2016-10-05</time>
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>创建一个父视图(fatherView)， 一个子视图(sonView)</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let fatherView = <span class="built_in">UIView</span>()</span><br><span class="line">fatherView.frame = <span class="built_in">CGRect</span>(x: <span class="number">30</span>, y: <span class="number">30</span>, width: <span class="number">200</span>, height: <span class="number">200</span>)</span><br><span class="line">fatherView.backgroundColor = .red</span><br><span class="line"><span class="keyword">self</span>.view.addSubview(fatherView)</span><br><span class="line"></span><br><span class="line">let sonView = <span class="built_in">UIView</span>()</span><br><span class="line">sonView.frame = <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">sonView.backgroundColor = .yellow</span><br><span class="line">fatherView.addSubview(sonView)</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/10/05/frame-bounds/frame-bounds0.png" alt="黑线是father的frame 坐标系 绿线是father的本地坐标系"></p>
+<p>更改一下父视图的bounds, 相当于更改了父视图的本地坐标系，父视图的左上角不再是父视图本地坐标系的原点(bounds默认的origin是(0,0))，而是本地坐标系的bounds.origin点.子视图会根据父视图的本地坐标系去布局(frame)。所以子视图的位置会发生改变。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let fatherView = <span class="built_in">UIView</span>()</span><br><span class="line">fatherView.frame = <span class="built_in">CGRect</span>(x: <span class="number">30</span>, y: <span class="number">30</span>, width: <span class="number">200</span>, height: <span class="number">200</span>)</span><br><span class="line">fatherView.backgroundColor = .red</span><br><span class="line"><span class="keyword">self</span>.view.addSubview(fatherView)</span><br><span class="line"></span><br><span class="line">fatherView.bounds = <span class="built_in">CGRect</span>(x: <span class="number">10</span>, y: <span class="number">10</span>, width: <span class="number">200</span>, height: <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">let sonView = <span class="built_in">UIView</span>()</span><br><span class="line">sonView.frame = <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">sonView.backgroundColor = .yellow</span><br><span class="line">fatherView.addSubview(sonView)</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/10/05/frame-bounds/frame-bounds1.png" alt="黑线是father的frame 坐标系 绿线是father的本地坐标系"></p>
+<p>当父视图旋转之后，自己的本地坐标系会跟着旋转，相当于子视图的布局没有变化。但是父视图的frame会发生变化。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let fatherView = <span class="built_in">UIView</span>()</span><br><span class="line">fatherView.frame = <span class="built_in">CGRect</span>(x: <span class="number">30</span>, y: <span class="number">30</span>, width: <span class="number">200</span>, height: <span class="number">200</span>)</span><br><span class="line">fatherView.backgroundColor = .red</span><br><span class="line"><span class="keyword">self</span>.view.addSubview(fatherView)</span><br><span class="line"></span><br><span class="line">fatherView.bounds = <span class="built_in">CGRect</span>(x: <span class="number">10</span>, y: <span class="number">10</span>, width: <span class="number">200</span>, height: <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">let sonView = <span class="built_in">UIView</span>()</span><br><span class="line">sonView.frame = <span class="built_in">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">100</span>, height: <span class="number">100</span>)</span><br><span class="line">sonView.backgroundColor = .yellow</span><br><span class="line">fatherView.addSubview(sonView)</span><br><span class="line"></span><br><span class="line">fatherView.transform = <span class="built_in">CGAffineTransform</span>(rotationAngle: <span class="built_in">CGFloat</span>(Double.pi / <span class="number">4</span>))</span><br><span class="line">print(fatherView.bounds)</span><br><span class="line">print(fatherView.frame)</span><br></pre></td></tr></table></figure>
+<p><img src="/2016/10/05/frame-bounds/frame-bounds2.png" alt="黑线是father的frame 坐标系 绿线是father的本地坐标系"></p>
+<p><img src="/2016/10/05/frame-bounds/frame-bounds3.png" alt=""></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://github.com/2016/10/05/frame-bounds/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://github.com/2016/10/05/frame-bounds/&text=frame&amp;bounds"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://github.com/2016/10/05/frame-bounds/&is_video=false&description=frame&amp;bounds"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=frame&amp;bounds&body=Check out this article: http://github.com/2016/10/05/frame-bounds/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://github.com/2016/10/05/frame-bounds/&title=frame&amp;bounds"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://github.com/2016/10/05/frame-bounds/&name=frame&amp;bounds&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 sunner
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
