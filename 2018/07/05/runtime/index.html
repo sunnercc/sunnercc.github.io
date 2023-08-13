@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    runtime |
+    
+    sunner
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0-rc2"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-runtime" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    runtime
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/07/05/runtime/" class="article-date">
+  <time datetime="2018-07-05T03:12:39.000Z" itemprop="datePublished">2018-07-05</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Types */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !OBJC_TYPES_DEFINED</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// An opaque type that represents a method in a class definition.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_method *Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// An opaque type that represents an instance variable.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_ivar *Ivar;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// An opaque type that represents a category.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_category *Category;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// An opaque type that represents an Objective-C declared property.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_property *objc_property_t;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_class &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !__OBJC2__</span></span><br><span class="line">    Class _Nullable super_class                              OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * _Nonnull name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">&#125; OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="comment">/* Use `Class` instead of `struct objc_class *` */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __OBJC__</span></span><br><span class="line"><span class="class"><span class="keyword">@class</span> <span class="title">Protocol</span>;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object Protocol;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// Defines a method</span></span><br><span class="line"><span class="keyword">struct</span> objc_method_description &#123;</span><br><span class="line">    SEL _Nullable name;               <span class="comment">/**&lt; The name of the method */</span></span><br><span class="line">    <span class="keyword">char</span> * _Nullable types;           <span class="comment">/**&lt; The types of the method arguments */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// Defines a property attribute</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * _Nonnull name;           <span class="comment">/**&lt; The name of the attribute */</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * _Nonnull value;          <span class="comment">/**&lt; The value of the attribute (usually empty) */</span></span><br><span class="line">&#125; objc_property_attribute_t;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_method_description_list &#123;</span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_description list[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_protocol_list &#123;</span><br><span class="line">    <span class="keyword">struct</span> objc_protocol_list * _Nullable next;</span><br><span class="line">    <span class="keyword">long</span> count;</span><br><span class="line">    __<span class="keyword">unsafe_unretained</span> Protocol * _Nullable list[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_category &#123;</span><br><span class="line">    <span class="keyword">char</span> * _Nonnull category_name                            OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">char</span> * _Nonnull class_name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_list * _Nullable instance_methods     OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_list * _Nullable class_methods        OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_ivar &#123;</span><br><span class="line">    <span class="keyword">char</span> * _Nullable ivar_name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">char</span> * _Nullable ivar_type                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">int</span> ivar_offset                                          OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __LP64__</span></span><br><span class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_ivar_list &#123;</span><br><span class="line">    <span class="keyword">int</span> ivar_count                                           OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __LP64__</span></span><br><span class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">/* variable length structure */</span></span><br><span class="line">    <span class="keyword">struct</span> objc_ivar ivar_list[<span class="number">1</span>]                            OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_method &#123;</span><br><span class="line">    SEL _Nonnull method_name                                 OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">char</span> * _Nullable method_types                            OBJC2_UNAVAILABLE;</span><br><span class="line">    IMP _Nonnull method_imp                                  OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_method_list &#123;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_list * _Nullable obsolete             OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> method_count                                         OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __LP64__</span></span><br><span class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">/* variable length structure */</span></span><br><span class="line">    <span class="keyword">struct</span> objc_method method_list[<span class="number">1</span>]                        OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_symtab *Symtab                           OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_symtab &#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> sel_ref_cnt                                OBJC2_UNAVAILABLE;</span><br><span class="line">    SEL _Nonnull * _Nullable refs                            OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> cls_def_cnt                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> cat_def_cnt                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">void</span> * _Nullable defs[<span class="number">1</span>] <span class="comment">/* variable size */</span>             OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_cache *Cache                             OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_BUCKET_NAME(B)  ((B)-&gt;method_name)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_BUCKET_IMP(B)   ((B)-&gt;method_imp)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_BUCKET_VALID(B) (B)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __LP64__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_HASH(sel, mask) (((uintptr_t)(sel)&gt;&gt;2) &amp; (mask))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_HASH(sel, mask) (((unsigned int)((uintptr_t)(sel)&gt;&gt;3)) &amp; (mask))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">struct</span> objc_cache &#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> mask <span class="comment">/* total = mask + 1 */</span>                 OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> occupied                                    OBJC2_UNAVAILABLE;</span><br><span class="line">    Method _Nullable buckets[<span class="number">1</span>]                              OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_module *Module                           OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_module &#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> version                                    OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * _Nullable name                              OBJC2_UNAVAILABLE;</span><br><span class="line">    Symtab _Nullable symtab                                  OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_method_list;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/07/05/runtime/instance%26class%26metaclass.png" alt></p>
+<p><img src="/2018/07/05/runtime/isa%26superclass.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/07/05/runtime/" data-id="cll91frgn000beu4mub4doeyc" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2018/08/05/associations/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      associations
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2018/06/05/autoreleasePoll/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">autoreleasePoll</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>sunner &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="sunner"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

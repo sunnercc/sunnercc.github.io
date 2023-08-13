@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    引用计数 |
+    
+    sunner
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0-rc2"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-引用计数" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    引用计数
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/05/05/%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0/" class="article-date">
+  <time datetime="2018-05-05T03:10:32.000Z" itemprop="datePublished">2018-05-05</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h2 id="苹果的引用计数"><a href="#苹果的引用计数" class="headerlink" title="苹果的引用计数"></a>苹果的引用计数</h2><p><img src="/2018/05/05/引用计数/appleRetainCount.png" alt></p>
+<h2 id="GUN的引用计数"><a href="#GUN的引用计数" class="headerlink" title="GUN的引用计数"></a>GUN的引用计数</h2><p><img src="/2018/05/05/引用计数/gunretainCount.png" alt></p>
+<p>分配内存<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">id</span>) alloc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> [<span class="keyword">self</span> allocWithZone: <span class="built_in">NSDefaultMallocZone</span>()];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>) allocWithZone: (<span class="built_in">NSZone</span>*)z</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">NSAllocateObject</span> (<span class="keyword">self</span>, <span class="number">0</span>, z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> obj_layout &#123;</span><br><span class="line">  <span class="keyword">char</span>	padding[__BIGGEST_ALIGNMENT__ - ((UNP % __BIGGEST_ALIGNMENT__)</span><br><span class="line">    ? (UNP % __BIGGEST_ALIGNMENT__) : __BIGGEST_ALIGNMENT__)];</span><br><span class="line">  gsrefcount_t	retained;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span>	<span class="keyword">struct</span> obj_layout *obj;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">id</span></span><br><span class="line"><span class="built_in">NSAllocateObject</span> (Class aClass, <span class="built_in">NSUInteger</span> extraBytes, <span class="built_in">NSZone</span> *zone)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">id</span>	new;</span><br><span class="line">  <span class="keyword">int</span>	size;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NSCAssert</span>((!class_isMetaClass(aClass)), <span class="string">@"Bad class for new object"</span>);</span><br><span class="line">  size = class_getInstanceSize(aClass) + extraBytes + <span class="keyword">sizeof</span>(<span class="keyword">struct</span> obj_layout);</span><br><span class="line">  <span class="keyword">if</span> (zone == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      zone = <span class="built_in">NSDefaultMallocZone</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  new = <span class="built_in">NSZoneMalloc</span>(zone, size);</span><br><span class="line">  <span class="keyword">if</span> (new != <span class="literal">nil</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      memset (new, <span class="number">0</span>, size);</span><br><span class="line">      new = (<span class="keyword">id</span>)&amp;((obj)new)[<span class="number">1</span>];</span><br><span class="line">      object_setClass(new, aClass);</span><br><span class="line">      AADD(aClass, new);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Don't bother doing this in a thread-safe way, because the cost of locking</span></span><br><span class="line"><span class="comment">   * will be a lot more than the cost of doing the same call in two threads.</span></span><br><span class="line"><span class="comment">   * The returned selector will persist and the runtime will ensure that both</span></span><br><span class="line"><span class="comment">   * calls return the same selector, so we don't need to bother doing it</span></span><br><span class="line"><span class="comment">   * ourselves.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="number">0</span> == cxx_construct)</span><br><span class="line">    &#123;</span><br><span class="line">      cxx_construct = sel_registerName(<span class="string">".cxx_construct"</span>);</span><br><span class="line">      cxx_destruct = sel_registerName(<span class="string">".cxx_destruct"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  callCXXConstructors(aClass, new);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> new;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>retain操作<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) <span class="keyword">retain</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">self</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line"><span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span>	defined(GSATOMICREAD)</span></span><br><span class="line">  <span class="comment">/* I've seen comments saying that some platforms only support up to</span></span><br><span class="line"><span class="comment">   * 24 bits in atomic locking, so raise an exception if we try to</span></span><br><span class="line"><span class="comment">   * go beyond 0xfffffe.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span> (GSAtomicIncrement((gsatomic_t)&amp;(((obj)anObject)[<span class="number">-1</span>].retained))</span><br><span class="line">    &gt; <span class="number">0xfffffe</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      [<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span></span><br><span class="line">        format: <span class="string">@"NSIncrementExtraRefCount() asked to increment too far"</span>];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span>	<span class="comment">/* GSATOMICREAD */</span></span></span><br><span class="line">  <span class="built_in">NSLock</span> *theLock = GSAllocationLockForObject(anObject);</span><br><span class="line"></span><br><span class="line">  [theLock lock];</span><br><span class="line">  <span class="keyword">if</span> (((obj)anObject)[<span class="number">-1</span>].retained &gt; <span class="number">0xfffffe</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      [theLock unlock];</span><br><span class="line">      [<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span></span><br><span class="line">        format: <span class="string">@"NSIncrementExtraRefCount() asked to increment too far"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  ((obj)anObject)[<span class="number">-1</span>].retained++;</span><br><span class="line">  [theLock unlock];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	<span class="comment">/* GSATOMICREAD */</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>release操作<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">oneway</span> <span class="keyword">void</span>) release</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">NSDecrementExtraRefCountWasZero</span>(<span class="keyword">self</span>))</span><br><span class="line">    &#123;</span><br><span class="line"><span class="meta">#  <span class="meta-keyword">ifdef</span> OBJC_CAP_ARC</span></span><br><span class="line">      objc_delete_weak_refs(<span class="keyword">self</span>);</span><br><span class="line"><span class="meta">#  <span class="meta-keyword">endif</span></span></span><br><span class="line">      [<span class="keyword">self</span> dealloc];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="built_in">BOOL</span></span><br><span class="line"><span class="built_in">NSDecrementExtraRefCountWasZero</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (double_release_check_enabled)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">NSUInteger</span> release_count;</span><br><span class="line">      <span class="built_in">NSUInteger</span> retain_count = [anObject retainCount];</span><br><span class="line">      release_count = [autorelease_class autoreleaseCountForObject: anObject];</span><br><span class="line">      <span class="keyword">if</span> (release_count &gt;= retain_count)</span><br><span class="line">        [<span class="built_in">NSException</span> raise: <span class="built_in">NSGenericException</span></span><br><span class="line">		    format: <span class="string">@"Release would release object too many times."</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span>	defined(GSATOMICREAD)</span></span><br><span class="line">    gsrefcount_t	result;</span><br><span class="line"></span><br><span class="line">    result = GSAtomicDecrement((gsatomic_t)&amp;(((obj)anObject)[<span class="number">-1</span>].retained));</span><br><span class="line">    <span class="keyword">if</span> (result &lt; <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> (result != <span class="number">-1</span>)</span><br><span class="line">          &#123;</span><br><span class="line">            [<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span></span><br><span class="line">              format: <span class="string">@"NSDecrementExtraRefCount() decremented too far"</span>];</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="comment">/* The counter has become negative so it must have been zero.</span></span><br><span class="line"><span class="comment">         * We reset it and return YES ... in a correctly operating</span></span><br><span class="line"><span class="comment">         * process we know we can safely reset back to zero without</span></span><br><span class="line"><span class="comment">         * worrying about atomicity, since there can be no other</span></span><br><span class="line"><span class="comment">         * thread accessing the object (or its reference count would</span></span><br><span class="line"><span class="comment">         * have been greater than zero)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        (((obj)anObject)[<span class="number">-1</span>].retained) = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span>	<span class="comment">/* GSATOMICREAD */</span></span></span><br><span class="line">    <span class="built_in">NSLock</span> *theLock = GSAllocationLockForObject(anObject);</span><br><span class="line"></span><br><span class="line">    [theLock lock];</span><br><span class="line">    <span class="keyword">if</span> (((obj)anObject)[<span class="number">-1</span>].retained == <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        [theLock unlock];</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        ((obj)anObject)[<span class="number">-1</span>].retained--;</span><br><span class="line">        [theLock unlock];</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	<span class="comment">/* GSATOMICREAD */</span></span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>autorelease操作<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) autorelease</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (double_release_check_enabled)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">NSUInteger</span> release_count;</span><br><span class="line">      <span class="built_in">NSUInteger</span> retain_count = [<span class="keyword">self</span> retainCount];</span><br><span class="line">      release_count = [autorelease_class autoreleaseCountForObject:<span class="keyword">self</span>];</span><br><span class="line">      <span class="keyword">if</span> (release_count &gt; retain_count)</span><br><span class="line">        [<span class="built_in">NSException</span></span><br><span class="line">	  raise: <span class="built_in">NSGenericException</span></span><br><span class="line">	  format: <span class="string">@"Autorelease would release object too many times.\n"</span></span><br><span class="line">	  <span class="string">@"%"</span>PRIuPTR<span class="string">" release(s) versus %"</span>PRIuPTR<span class="string">" retain(s)"</span>,</span><br><span class="line">	  release_count, retain_count];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  (*autorelease_imp)(autorelease_class, autorelease_sel, <span class="keyword">self</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>获取引用计数<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSUInteger</span>) retainCount</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">NSExtraRefCount</span>(<span class="keyword">self</span>) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="built_in">NSUInteger</span></span><br><span class="line"><span class="built_in">NSExtraRefCount</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> ((obj)anObject)[<span class="number">-1</span>].retained;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对象释放<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line"><span class="built_in">NSDeallocateObject</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">  Class aClass = object_getClass(anObject);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((anObject != <span class="literal">nil</span>) &amp;&amp; !class_isMetaClass(aClass))</span><br><span class="line">    &#123;</span><br><span class="line">      obj	o = &amp;((obj)anObject)[<span class="number">-1</span>];</span><br><span class="line">      <span class="built_in">NSZone</span>	*z = <span class="built_in">NSZoneFromPointer</span>(o);</span><br><span class="line"></span><br><span class="line">      <span class="comment">/* Call the default finalizer to handle C++ destructors.</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">      (*finalize_imp)(anObject, finalize_sel);</span><br><span class="line"></span><br><span class="line">      AREM(aClass, (<span class="keyword">id</span>)anObject);</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">NSZombieEnabled</span> == <span class="literal">YES</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	  GSMakeZombie(anObject, aClass);</span><br><span class="line">	  <span class="keyword">if</span> (<span class="built_in">NSDeallocateZombies</span> == <span class="literal">YES</span>)</span><br><span class="line">	    &#123;</span><br><span class="line">	      <span class="built_in">NSZoneFree</span>(z, o);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">	  object_setClass((<span class="keyword">id</span>)anObject, (Class)(<span class="keyword">void</span>*)<span class="number">0xdeadface</span>);</span><br><span class="line">	  <span class="built_in">NSZoneFree</span>(z, o);</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/05/05/%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0/" data-id="cll91frgs000geu4mtwn5kx7u" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2018/06/05/autoreleasePoll/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      autoreleasePoll
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2017/12/05/http/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">http</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>sunner &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="sunner"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

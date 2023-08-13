@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    博客搭建 |
+    
+    sunner
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0-rc2"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-博客搭建" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    博客搭建
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/10/13/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2018-10-13T04:39:16.000Z" itemprop="datePublished">2018-10-13</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>闲暇之余，想搭建一个属于自己的网站，用来记录自己的学习过程，以及自己的学习心得。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>  目前比较流行的写博客的格式都是markdown，我希望实现的效果是编辑一篇.md文档，直接commit-push就万事大吉。</p>
+<p>  首先确定使用GithubPage来搭建，GithubPage会首先解析index.html，所以可以在index.html中来做文章。</p>
+<p>  bootstrap是一个流行的前端框架，我准备利用bootstrap来布局样式。</p>
+<p>  marked.js是一个markdown解析库，简单来说，就是可以把.md文件解析为html。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>.md里面的链接地址写成?md=<em>.md这种格式，这样以来，md=</em>.md就会变成get请求的参数，url地址就会变成<a href="https://sunnercc.github.io/index.html?md=*.md" target="_blank" rel="noopener">https://sunnercc.github.io/index.html?md=*.md</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello-world [link](?md=hello-world.md)</span><br></pre></td></tr></table></figure></p>
+<p>取出url地址参数中md对应的value就可以获取到文件名，然后拼接需要解析的.md文件的请求路径url。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var url = &quot;https://raw.githubusercontent.com/sunnercc/sunnercc.github.io/master/post/about.md&quot;</span><br><span class="line">var param = location.search.split(&quot;?md=&quot;)[1]</span><br><span class="line">if (param) &#123;</span><br><span class="line">  url = &quot;https://raw.githubusercontent.com/sunnercc/sunnercc.github.io/master/post/&quot; + param</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求拼接后的url，获取文件内容，然后利用marked解析获取结果，替换content标签中的内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp = new XMLHttpRequest();</span><br><span class="line">xmlhttp.open(&quot;GET&quot;, url, false);</span><br><span class="line">xmlhttp.send();</span><br><span class="line">document.getElementById(&apos;content&apos;).innerHTML = marked(xmlhttp.responseText);</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>主要是利用marked来解析.md文档生成html，利用bootstrap搭建做了一些简单样式，<br>还可以利用highlight.js来实现markdown代码块的高亮显示，但是我觉得太丑了，所以就没有使用.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/10/13/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-id="cll91frgr000feu4m3b0a5tbx" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2018/10/14/duck/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      duck
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2018/09/28/markdown-highlight/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">markdown-highlight</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>sunner &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="sunner"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

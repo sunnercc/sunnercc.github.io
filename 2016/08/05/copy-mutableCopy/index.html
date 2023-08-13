@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    copy&amp;mutableCopy |
+    
+    sunner
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0-rc2"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-copy-mutableCopy" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    copy&amp;mutableCopy
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2016/08/05/copy-mutableCopy/" class="article-date">
+  <time datetime="2016-08-05T03:12:26.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <p>对于熟悉iOS开发的人的来说，copy和mutableCopy这两个词肯定不陌生。但是区别是什么呢，百度一搜一大堆，但是解释的千奇百怪，毫无真相。</p>
+<h2 id="首先明白两个概念"><a href="#首先明白两个概念" class="headerlink" title="首先明白两个概念"></a>首先明白两个概念</h2><ul>
+<li>浅拷贝: 也称为浅复制。不开辟新的内存空间。仅仅是拷贝指向对象的指针。</li>
+<li>深拷贝: 也称为深复制。开辟新的内存空间。拷贝整个对象内存到新开辟的内存中去。</li>
+</ul>
+<h2 id="解释一个英文单词"><a href="#解释一个英文单词" class="headerlink" title="解释一个英文单词"></a>解释一个英文单词</h2><ul>
+<li>mutable 可变的</li>
+</ul>
+<p>iOS开发中最常见的类就是NSString, 还有一些容器类(NSArray, NSDictionary, NSSet).我会选取经典的NSString以及容器类的代表NSArray来写4个例子。得出实验结论。</p>
+<h2 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h2><p>针对NSSting 写出下列测试代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *str1 = <span class="string">@"123"</span>;  <span class="comment">// 常量区分配</span></span><br><span class="line"><span class="built_in">NSString</span> *str2 = [str1 <span class="keyword">copy</span>];</span><br><span class="line"><span class="built_in">NSMutableString</span> *str3 = [str1 mutableCopy];</span><br><span class="line">printf(<span class="string">"\n str1 -&gt; = %p \n str2 -&gt; = %p \n str3 -&gt; = %p"</span>, str1, str2, str3);</span><br></pre></td></tr></table></figure>
+<p>控制台的打印如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1 -&gt; = 0x1072d9088</span><br><span class="line">str2 -&gt; = 0x1072d9088</span><br><span class="line">str3 -&gt; = 0x600001c2c000</span><br></pre></td></tr></table></figure>
+<p>可以看出：</p>
+<ul>
+<li>str1指向的地址和str2指向的地址是同一个地址.str2并没有开辟新的空间,仅仅是指针的拷贝.</li>
+<li>str1指向的地址和str3指向的地址不是同一个地址。str3开辟了新的空间.</li>
+</ul>
+<h2 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h2><p>针对NSMutableString 写出下列测试代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *str1 = <span class="string">@"123"</span>; <span class="comment">// 常量区分配</span></span><br><span class="line"><span class="built_in">NSMutableString</span> *m_str1 = [<span class="built_in">NSMutableString</span> stringWithString:str1];  <span class="comment">// 堆区重新分配</span></span><br><span class="line"><span class="built_in">NSString</span> *m_str2 = [m_str1 <span class="keyword">copy</span>];</span><br><span class="line"><span class="built_in">NSMutableString</span> *m_str3 = [m_str1 mutableCopy];</span><br><span class="line">printf(<span class="string">"\n m_str1 -&gt; = %p \n m_str2 -&gt; = %p \n m_str3 -&gt; = %p"</span>, m_str1, m_str2, m_str3);</span><br></pre></td></tr></table></figure>
+<p>控制台的打印如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m_str1 -&gt; = 0x600003143b40</span><br><span class="line">m_str2 -&gt; = 0xbe9e1c56d14b79e2</span><br><span class="line">m_str3 -&gt; = 0x600003143e70</span><br></pre></td></tr></table></figure>
+<p>可以看出：</p>
+<ul>
+<li>m_str1指向的地址和m_str2指向的地址不是同一个地址. m_str2开辟了新的空间.</li>
+<li>m_str1指向的地址和m_str3指向的地址不是同一个地址。m_str3开辟了新的空间.</li>
+</ul>
+<h2 id="例子3"><a href="#例子3" class="headerlink" title="例子3"></a>例子3</h2><p>针对容器类NSArray 写出下列测试代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *arr1 = @[@<span class="number">1</span>, @<span class="number">2</span>, @<span class="number">3</span>];</span><br><span class="line"><span class="built_in">NSArray</span> *arr2 = [arr1 <span class="keyword">copy</span>];</span><br><span class="line"><span class="built_in">NSMutableArray</span> *arr3 = [arr1 mutableCopy];</span><br><span class="line">printf(<span class="string">"\n arr1 -&gt; = %p \n arr2 -&gt; = %p \n arr3 -&gt; = %p"</span>, arr1, arr2, arr3);</span><br><span class="line">printf(<span class="string">"\n arr1 items:"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr1.count; i++) &#123;</span><br><span class="line">    printf(<span class="string">"\n %d -&gt; = %p"</span>, i, arr1[i]);</span><br><span class="line">&#125;</span><br><span class="line">printf(<span class="string">"\n arr2 items:"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr2.count; i++) &#123;</span><br><span class="line">    printf(<span class="string">"\n %d -&gt; = %p"</span>, i, arr2[i]);</span><br><span class="line">&#125;</span><br><span class="line">printf(<span class="string">"\n arr3 items:"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr3.count; i++) &#123;</span><br><span class="line">    printf(<span class="string">"\n %d -&gt; = %p"</span>, i, arr3[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>控制台的打印如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">arr1 -&gt; = 0x600001490090</span><br><span class="line">arr2 -&gt; = 0x600001490090</span><br><span class="line">arr3 -&gt; = 0x6000014900c0</span><br><span class="line">arr1 items:</span><br><span class="line">0 -&gt; = 0xb690da9c196700a8</span><br><span class="line">1 -&gt; = 0xb690da9c19670098</span><br><span class="line">2 -&gt; = 0xb690da9c19670088</span><br><span class="line">arr2 items:</span><br><span class="line">0 -&gt; = 0xb690da9c196700a8</span><br><span class="line">1 -&gt; = 0xb690da9c19670098</span><br><span class="line">2 -&gt; = 0xb690da9c19670088</span><br><span class="line">arr3 items:</span><br><span class="line">0 -&gt; = 0xb690da9c196700a8</span><br><span class="line">1 -&gt; = 0xb690da9c19670098</span><br><span class="line">2 -&gt; = 0xb690da9c19670088</span><br></pre></td></tr></table></figure>
+<p>可以看出：</p>
+<ul>
+<li>arr1指向的地址和arr2指向的地址是同一个地址.str2并没有开辟新的空间,仅仅是指针的拷贝.</li>
+<li>arr1中的子元素指向的地址和arr2中的子元素指向的地址是同一个地址, 子元素没有开辟内存，仅仅是指针的拷贝</li>
+<li>arr1指向的地址和str3指向的地址不是同一个地址。arr3开辟了新的空间.</li>
+<li>arr1中的子元素指向的地址和arr3中的子元素指向的地址是同一个地址, 子元素没有开辟内存，仅仅是指针的拷贝</li>
+</ul>
+<h2 id="例子4"><a href="#例子4" class="headerlink" title="例子4"></a>例子4</h2><p>针对容器类NSMutableArray 写出下列测试代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSArray</span> *arr1 = @[@<span class="number">1</span>, @<span class="number">2</span>, @<span class="number">3</span>];</span><br><span class="line"><span class="built_in">NSMutableArray</span> *m_arr1 = [<span class="built_in">NSMutableArray</span> arrayWithArray:arr1];</span><br><span class="line"><span class="built_in">NSArray</span> *m_arr2 = [arr1 <span class="keyword">copy</span>];</span><br><span class="line"><span class="built_in">NSMutableArray</span> *m_arr3 = [arr1 mutableCopy];</span><br><span class="line">printf(<span class="string">"\n m_arr1 -&gt; = %p \n m_arr2 -&gt; = %p \n m_arr3 -&gt; = %p"</span>, m_arr1, m_arr2, m_arr3);</span><br><span class="line">printf(<span class="string">"\n m_arr1 items:"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m_arr1.count; i++) &#123;</span><br><span class="line">    printf(<span class="string">"\n %d -&gt; = %p"</span>, i, m_arr1[i]);</span><br><span class="line">&#125;</span><br><span class="line">printf(<span class="string">"\n m_arr2 items:"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m_arr2.count; i++) &#123;</span><br><span class="line">    printf(<span class="string">"\n %d -&gt; = %p"</span>, i, m_arr2[i]);</span><br><span class="line">&#125;</span><br><span class="line">printf(<span class="string">"\n m_arr3 items:"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m_arr3.count; i++) &#123;</span><br><span class="line">    printf(<span class="string">"\n %d -&gt; = %p"</span>, i, m_arr3[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>控制台的打印如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">m_arr1 -&gt; = 0x6000014900c0</span><br><span class="line">m_arr2 -&gt; = 0x600001490090</span><br><span class="line">m_arr3 -&gt; = 0x600001490030</span><br><span class="line">m_arr1 items:</span><br><span class="line">0 -&gt; = 0xb690da9c196700a8</span><br><span class="line">1 -&gt; = 0xb690da9c19670098</span><br><span class="line">2 -&gt; = 0xb690da9c19670088</span><br><span class="line">m_arr2 items:</span><br><span class="line">0 -&gt; = 0xb690da9c196700a8</span><br><span class="line">1 -&gt; = 0xb690da9c19670098</span><br><span class="line">2 -&gt; = 0xb690da9c19670088</span><br><span class="line">m_arr3 items:</span><br><span class="line">0 -&gt; = 0xb690da9c196700a8</span><br><span class="line">1 -&gt; = 0xb690da9c19670098</span><br><span class="line">2 -&gt; = 0xb690da9c19670088</span><br></pre></td></tr></table></figure>
+<p>可以看出</p>
+<ul>
+<li>m_arr1指向的地址和m_str2指向的地址是同一个地址. arr2开辟了新的空间.</li>
+<li>m_arr1中的子元素指向的地址和m_arr2中的子元素指向的地址是同一个地址, 子元素没有开辟内存，仅仅是指针的拷贝</li>
+<li>m_str1指向的地址和m_str3指向的地址不是同一个地址。str3开辟了新的空间</li>
+<li>m_arr1中的子元素指向的地址和m_arr3中的子元素指向的地址是同一个地址, 子元素没有开辟内存，仅仅是指针的拷贝</li>
+</ul>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
+<li>copy产生不可变类型<ul>
+<li>不可变类型 -&gt; copy -&gt; 不可变类型 : 不开辟空间</li>
+<li>可变类型 -&gt; copy -&gt; 不可变类型 : 开辟空间</li>
+<li>容器类中的子元素仅仅指针拷贝,不开辟空间</li>
+</ul>
+</li>
+<li>mutableCopy产生可变类型<ul>
+<li>不可变类型 -&gt; mutableCopy -&gt; 可变类型 : 开辟空间</li>
+<li>可变类型 -&gt; copy -&gt; 可变类型 : 开辟空间</li>
+<li>容器类中的子元素仅仅指针拷贝,不开辟空间</li>
+</ul>
+</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><a href="https://github.com/sunnercc/Program/tree/master/copy-mutableCopy">code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2016/08/05/copy-mutableCopy/" data-id="cll91frgf0004eu4ml37df63w" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2016/10/05/frame-bounds/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      frame&amp;bounds
+      
+    </div>
+  </a>
+  
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>sunner &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="sunner"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

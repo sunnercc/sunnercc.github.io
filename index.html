@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    
+    sunner
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0-rc2"></head>
+
+<body>
+  <main class="content">
+    <section class="jumbotron">
+  <div class="video">
+    
+    <div class="video-frame">
+      <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+    </div>
+    
+    <div class="video-media">
+      <video playsinline="" autoplay="" loop="" muted="" data-autoplay="" poster="/images/ocean/ocean.png"
+        x5-video-player-type="h5">
+        <source src="/images/ocean/ocean.mp4" type="video/mp4">
+        <source src="/images/ocean/ocean.ogv" type="video/ogg">
+        <source src="/images/ocean/ocean.webm" type="video/webm">
+        <p>Your user agent does not support the HTML5 Video element.</p>
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">sunner</a></h1>
+      <p></p>
+      <div><img src="/images/hexo-inverted.svg" class="brand" alt="sunner"></div>
+    </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+<div id="landingpage">
+  <section class="outer">
+  <article class="articles">
+    
+    <h1 class="page-type-title"></h1>
+    
+    
+    <article id="post-面试题总结" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/12/25/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">面试题总结</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/12/25/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2018-12-25T02:05:02.000Z" itemprop="datePublished">2018-12-25</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><h4 id="UIView和CALayer的关系？"><a href="#UIView和CALayer的关系？" class="headerlink" title="UIView和CALayer的关系？"></a>UIView和CALayer的关系？</h4><ul>
+<li>UIView为其提供内容，以及负责处理触摸等事件，参与响应链</li>
+<li>CALayer负责显示内容contents</li>
+<li>backing store  位图</li>
+<li>设计模式用到了单一职责原则</li>
+</ul>
+<h4 id="响应链？"><a href="#响应链？" class="headerlink" title="响应链？"></a>响应链？</h4><h4 id="离屏渲染？"><a href="#离屏渲染？" class="headerlink" title="离屏渲染？"></a>离屏渲染？</h4><h4 id="优化方案？"><a href="#优化方案？" class="headerlink" title="优化方案？"></a>优化方案？</h4><ul>
+<li>cpu: （减轻cpu负担，消耗任务放入子线程)</li>
+<li>对象创建 调整 销毁</li>
+<li>预排版（布局计算，文本计算）</li>
+<li>预渲染（文本等异步绘制，图片编解码等）</li>
+<li>gpu: </li>
+<li>纹理渲染 （避免离屏渲染）</li>
+<li>视图混合 （减轻视图混合）</li>
+</ul>
+<h2 id="oc语言"><a href="#oc语言" class="headerlink" title="oc语言"></a>oc语言</h2><h4 id="属性关键字都有哪些？"><a href="#属性关键字都有哪些？" class="headerlink" title="属性关键字都有哪些？"></a>属性关键字都有哪些？</h4><ul>
+<li>读写权限</li>
+<li>readonly </li>
+<li>readwrite 默认</li>
+<li>原子性</li>
+<li>atomic  默认</li>
+<li>nonatomic</li>
+<li>引用计数</li>
+<li>retain/strong</li>
+<li>assign/unsafe_unretained</li>
+<li>weak/copy</li>
+</ul>
+<h4 id="关键字的区别？"><a href="#关键字的区别？" class="headerlink" title="关键字的区别？"></a>关键字的区别？</h4><ul>
+<li>readonly : 修饰任何类型，仅仅生成get方法</li>
+<li>readwrite: 修饰任何类型，生成get方法，又生成set方法</li>
+<li>strong: 修饰对象类型. 强引用被修饰对象。</li>
+<li>weak: 修饰对象类型。弱引用被修饰对象，当被修饰对象释放的时候，weak修饰的对象指针会指向nil</li>
+<li>unsafe_unretained: (不safe不retain): 修饰对象类型。弱引用被修饰对象。与weak相似。区别在于:当被修饰对象释放的时候，weak修饰的对象指针不会指向nil,会造成野指针。</li>
+<li>copy: 修饰不可变对象类型。强引用被修饰对象。</li>
+</ul>
+<h4 id="atomic修饰的属性线程安全吗？"><a href="#atomic修饰的属性线程安全吗？" class="headerlink" title="atomic修饰的属性线程安全吗？"></a>atomic修饰的属性线程安全吗？</h4><ul>
+<li>atomic只是保证修饰的对象是线程安全，但不保证对象的操作线程安全</li>
+<li>比如数组，保证设置数组和获取数组是线程安全，但不保证数组移除添加操作是线程安全</li>
+</ul>
+<h4 id="assign-vs-weak"><a href="#assign-vs-weak" class="headerlink" title="assign vs weak?"></a>assign vs weak?</h4><ul>
+<li>assign: </li>
+<li>修饰基本数据类型，如int</li>
+<li>修饰对象类型，不改变其引用技术</li>
+<li>修饰对象不会自动设置为nil，会产生悬垂指针，产生野指针</li>
+<li>weak</li>
+<li>只能修饰对象</li>
+<li>不改变被修饰对象的引用技术</li>
+<li>修饰的对象被释放后，不会自动设置为nil</li>
+</ul>
+<h4 id="weak属性需要在dealloc中置nil么？"><a href="#weak属性需要在dealloc中置nil么？" class="headerlink" title="weak属性需要在dealloc中置nil么？"></a>weak属性需要在dealloc中置nil么？</h4><p>不需要， weak会自动置nil</p>
+<h4 id="synthesize和-dynamic分别有什么作用？"><a href="#synthesize和-dynamic分别有什么作用？" class="headerlink" title="@synthesize和@dynamic分别有什么作用？"></a>@synthesize和@dynamic分别有什么作用？</h4><ul>
+<li>@synthesize自动合成set get ivar</li>
+<li>@dynamic 不生成 set get</li>
+</ul>
+<h4 id="ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？"><a href="#ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？" class="headerlink" title="ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？"></a>ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？</h4><p>readwrite atomic retain</p>
+<h4 id="用-property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？"><a href="#用-property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？" class="headerlink" title="用@property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？"></a>用@property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？</h4><ul>
+<li>使用copy 保证对象的本质不会被破坏，依然是不可变类型</li>
+<li>使用strong， 有可能本质变为可变类型。破坏本质, 有可能会发生方法无法找到，会crash</li>
+</ul>
+<h4 id="synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为-foo的实例变量，那么还会自动合成新变量么？"><a href="#synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为-foo的实例变量，那么还会自动合成新变量么？" class="headerlink" title="@synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为_foo的实例变量，那么还会自动合成新变量么？"></a>@synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为_foo的实例变量，那么还会自动合成新变量么？</h4><ul>
+<li>会生成_开头的变量</li>
+<li>不会自动合成新的变量</li>
+</ul>
+<h4 id="在有了自动合成属性实例变量之后，-synthesize还有哪些使用场景？"><a href="#在有了自动合成属性实例变量之后，-synthesize还有哪些使用场景？" class="headerlink" title="在有了自动合成属性实例变量之后，@synthesize还有哪些使用场景？"></a>在有了自动合成属性实例变量之后，@synthesize还有哪些使用场景？</h4><ul>
+<li>synthesize name = _helloname</li>
+<li>可以更改自动合成变量的名称</li>
+</ul>
+<h4 id="objc中向一个nil对象发送消息将会发生什么？"><a href="#objc中向一个nil对象发送消息将会发生什么？" class="headerlink" title="objc中向一个nil对象发送消息将会发生什么？"></a>objc中向一个nil对象发送消息将会发生什么？</h4><p>没有任何反应</p>
+<h4 id="通知和代理的区别？"><a href="#通知和代理的区别？" class="headerlink" title="通知和代理的区别？"></a>通知和代理的区别？</h4><ul>
+<li>通知</li>
+<li>是使用观察者模式来实现的用于跨层传递消息的机制</li>
+<li>传递方式是一对多的</li>
+<li>代理</li>
+<li>准确的说是一种软件设计模式，iOS当中以@protocol形式体现</li>
+<li>传递方式一对一</li>
+</ul>
+<h4 id="通知如何实现一对多？"><a href="#通知如何实现一对多？" class="headerlink" title="通知如何实现一对多？"></a>通知如何实现一对多？</h4><h4 id="如何实现通知机制？"><a href="#如何实现通知机制？" class="headerlink" title="如何实现通知机制？"></a>如何实现通知机制？</h4><h4 id="代理的工作流程？"><a href="#代理的工作流程？" class="headerlink" title="代理的工作流程？"></a>代理的工作流程？</h4><h4 id="什么是kvo？"><a href="#什么是kvo？" class="headerlink" title="什么是kvo？"></a>什么是kvo？</h4><ul>
+<li>kvo是key-value observing的缩写</li>
+<li>kvo是objective-c对观察者模式的又一实现</li>
+<li>apple使用了isa混写（isa-swizzling）来实现kvo</li>
+</ul>
+<h4 id="kvo如何实现isa-swizzling"><a href="#kvo如何实现isa-swizzling" class="headerlink" title="kvo如何实现isa-swizzling?"></a>kvo如何实现isa-swizzling?</h4><ul>
+<li>生成NSKVONotifying_A类</li>
+<li>重写set方法</li>
+</ul>
+<h4 id="通过kvc设置value，kvo能否生效？"><a href="#通过kvc设置value，kvo能否生效？" class="headerlink" title="通过kvc设置value，kvo能否生效？"></a>通过kvc设置value，kvo能否生效？</h4><p>最终会调用value的set方法，可以生效</p>
+<h4 id="通过成员变量直接赋值value能否生效？"><a href="#通过成员变量直接赋值value能否生效？" class="headerlink" title="通过成员变量直接赋值value能否生效？"></a>通过成员变量直接赋值value能否生效？</h4><p>不能</p>
+<h4 id="手动kvo？"><a href="#手动kvo？" class="headerlink" title="手动kvo？"></a>手动kvo？</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)willChangeValueForKey:(<span class="built_in">NSString</span> *)key</span><br><span class="line">····</span><br><span class="line">- (<span class="keyword">void</span>)didChangeValueForKey:(<span class="built_in">NSString</span> *)key</span><br></pre></td></tr></table></figure>
+<h4 id="什么是kvc？"><a href="#什么是kvc？" class="headerlink" title="什么是kvc？"></a>什么是kvc？</h4><ul>
+<li>kvc是key-value coding的缩写</li>
+<li>键值编码技术</li>
+<li><ul>
+<li>(id)valueForKey:(NSString *)key</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)setValue:(id)value forKey:(NSString *)key</li>
+</ul>
+</li>
+</ul>
+<h4 id="键值编码技术是否会违背面向对象的编程思想？"><a href="#键值编码技术是否会违背面向对象的编程思想？" class="headerlink" title="键值编码技术是否会违背面向对象的编程思想？"></a>键值编码技术是否会违背面向对象的编程思想？</h4><p>yes</p>
+<h4 id="分类的加载调用栈？"><a href="#分类的加载调用栈？" class="headerlink" title="分类的加载调用栈？"></a>分类的加载调用栈？</h4><p>分类添加的方法可以‘覆盖‘原类方法（其实不是覆盖，在方法列表中，分类方法的位置位于原类方法的位置的前面）<br>同名分类方法谁能生效取决于编译顺序，最后编译的分类会覆盖掉前面编译的分类<br>名字相同的分类会引起编译报错</p>
+<h4 id="分类和扩展的区别？"><a href="#分类和扩展的区别？" class="headerlink" title="分类和扩展的区别？"></a>分类和扩展的区别？</h4><ul>
+<li>扩展是编译时决议 </li>
+<li>分类是运行时决议</li>
+<li>扩展只以声明的形式存在，扩展的实现写在宿主类当中，多数情况下寄生于宿主类的.m中</li>
+<li>分类有声明，有实现</li>
+<li>不能为系统类添加扩展</li>
+<li>可以为系统类添加分类</li>
+</ul>
+<h4 id="关联对象？"><a href="#关联对象？" class="headerlink" title="关联对象？"></a>关联对象？</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">id</span> objc_getAssociatedObject(<span class="keyword">id</span> object, <span class="keyword">const</span> <span class="keyword">void</span> * key)</span><br><span class="line"><span class="keyword">void</span> objc_setAssociatedObject(<span class="keyword">id</span> object, <span class="keyword">const</span> <span class="keyword">void</span> * key, <span class="keyword">id</span> value, objc_AssociationPolicy policy)</span><br><span class="line"><span class="keyword">void</span> objc_removeAssociatedObjects(<span class="keyword">id</span> object)</span><br></pre></td></tr></table></figure>
+<h4 id="关联对象本质？"><a href="#关联对象本质？" class="headerlink" title="关联对象本质？"></a>关联对象本质？</h4><ul>
+<li>关联对象由 AssociationsManager 管理并在 AssociationsHashMap 存储.</li>
+<li>所有对象的关联内容都在同一个全局容器中</li>
+</ul>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h4 id="iOS中，提供了哪几种多线程技术方案？"><a href="#iOS中，提供了哪几种多线程技术方案？" class="headerlink" title="iOS中，提供了哪几种多线程技术方案？"></a>iOS中，提供了哪几种多线程技术方案？</h4><ul>
+<li>gcd</li>
+<li>NSOperation</li>
+<li>nsthread</li>
+</ul>
+<h4 id="同步-异步-串行-并法-？"><a href="#同步-异步-串行-并法-？" class="headerlink" title="同步/异步 串行/并法 ？"></a>同步/异步 串行/并法 ？</h4><ul>
+<li>disaptch_sync(serial_queue, ^{任务})</li>
+<li>disaptch_async(serial_queue, ^{任务})</li>
+<li>disaptch_sync(concurrent_queue, ^{任务})</li>
+<li>disaptch_async(oncurrent_queue, ^{任务})</li>
+</ul>
+<h4 id="dispatch-sync-dispatch-get-main-queue-任务-有什么问题？"><a href="#dispatch-sync-dispatch-get-main-queue-任务-有什么问题？" class="headerlink" title="dispatch_sync(dispatch_get_main_queue(), ^{任务}); 有什么问题？"></a>dispatch_sync(dispatch_get_main_queue(), ^{任务}); 有什么问题？</h4><ul>
+<li>死锁  </li>
+<li>队列引起的循环等待</li>
+</ul>
+<h4 id="怎样利用gcd实现多读单写？"><a href="#怎样利用gcd实现多读单写？" class="headerlink" title="怎样利用gcd实现多读单写？"></a>怎样利用gcd实现多读单写？</h4><ul>
+<li>dispatch_barricer_async</li>
+</ul>
+<h4 id="NSOperation需要和NSOperationQueue配合使用来实现多线程方案"><a href="#NSOperation需要和NSOperationQueue配合使用来实现多线程方案" class="headerlink" title="NSOperation需要和NSOperationQueue配合使用来实现多线程方案"></a>NSOperation需要和NSOperationQueue配合使用来实现多线程方案</h4><ul>
+<li>添加任务依赖</li>
+<li>任务执行状态控制</li>
+<li>最大并发量</li>
+</ul>
+<h4 id="我们可以控制NSOperation的哪些状态？"><a href="#我们可以控制NSOperation的哪些状态？" class="headerlink" title="我们可以控制NSOperation的哪些状态？"></a>我们可以控制NSOperation的哪些状态？</h4><ul>
+<li>isReady</li>
+<li>isExecuting</li>
+<li>isFinished</li>
+<li><p>isCancelled</p>
+</li>
+<li><p>如果仅仅重写了main方法， 底层控制变更任务执行状态，以及任务退出</p>
+</li>
+<li>如果重写了start方法以及main方法，需要在start方法中自行控制任务状态</li>
+</ul>
+<h4 id="NSthread考点？"><a href="#NSthread考点？" class="headerlink" title="NSthread考点？"></a>NSthread考点？</h4><ul>
+<li>一般会和runloop一起考察常驻线程</li>
+</ul>
+<h4 id="iOS中有哪些锁？"><a href="#iOS中有哪些锁？" class="headerlink" title="iOS中有哪些锁？"></a>iOS中有哪些锁？</h4><ul>
+<li>@synchronized</li>
+<li>atomic</li>
+<li>OSSpinLock</li>
+<li>NSLock</li>
+<li>RecursiveLock</li>
+</ul>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h4 id="内存管理原则？"><a href="#内存管理原则？" class="headerlink" title="内存管理原则？"></a>内存管理原则？</h4><ul>
+<li><ol>
+<li>alloc/new/copy/mutablecopy开头的方法，生成并持有对象。 引用计数+1</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>retain 持有对象， 引用计数+1</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>release 释放对象， 引用计数-1</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>dealloc 废弃对象。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>自己持有的对象，自己可以释放</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>非自己持有的对象， 自己不能释放</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>非自己生成的对象，自己也可以持有(通过retain)</li>
+</ol>
+</li>
+</ul>
+<h4 id="cf的内存管理？"><a href="#cf的内存管理？" class="headerlink" title="cf的内存管理？"></a>cf的内存管理？</h4><p>当遇到create和copy开的方法时候，成对出现的一定有release方法</p>
+<h4 id="autorealsepoll-的实现原理？"><a href="#autorealsepoll-的实现原理？" class="headerlink" title="@autorealsepoll{}的实现原理？"></a>@autorealsepoll{}的实现原理？</h4><ul>
+<li>autoreleasepoll是有一个AutorelesePage类来管理的。</li>
+<li>AutorelesePage是一个双向链表，通过parent和child来实现</li>
+<li>AutorelesePage是通过游标next来存储autorelease对象的</li>
+<li>@autorelesepoll{}大括号开始的时候，会调用AutorelesePage的push方法.</li>
+<li>@autorelesepoll{}大括号结束的时候，会调用AutorelesePage的pop方法.<h4 id="哨兵对象是什么？"><a href="#哨兵对象是什么？" class="headerlink" title="哨兵对象是什么？"></a>哨兵对象是什么？</h4></li>
+<li>在{的时候，会push进去一个哨兵对象，压入栈顶。返回哨兵对象</li>
+<li>在}的时候，会传入哨兵对象给pop方法，依次弹出autorelease，并发送release消息。直到哨兵对象</li>
+<li>relasepoll的释放是在每一次runloop迭代结束的时候释放的。</li>
+<li>一个relasepoll对象一个线程</li>
+<li>一个线程对应一个AutorelesePage链表。（可能有多页）</li>
+</ul>
+<h4 id="如何保证嵌套pool的正确管理？"><a href="#如何保证嵌套pool的正确管理？" class="headerlink" title="如何保证嵌套pool的正确管理？"></a>如何保证嵌套pool的正确管理？</h4><p>每次push会传入哨兵对象，每次pop会释放对象直到哨兵对象。所以可以正确管理</p>
+<h4 id="arc如何实现weak？"><a href="#arc如何实现weak？" class="headerlink" title="arc如何实现weak？"></a>arc如何实现weak？</h4><ul>
+<li>通过sidetable</li>
+<li>sidetables是一个hash表，key:obj value:sidetable</li>
+<li>sidetable中变量 ref, enties;</li>
+<li>ref : 管理引用计数 map -&gt; 使用了分离锁的思想。</li>
+<li>enties 数组: 存储了执行obj对象的所有weak指针的地址</li>
+</ul>
+<h4 id="cf对象转化为oc对象，内存如何管理？"><a href="#cf对象转化为oc对象，内存如何管理？" class="headerlink" title="cf对象转化为oc对象，内存如何管理？"></a>cf对象转化为oc对象，内存如何管理？</h4><ul>
+<li>brige: oc对象保持引用。cf不保持引用</li>
+<li>brige_retain: oc对象保持引用。 cf保持引用</li>
+<li>brige_transfor : oc对象不保持引用。 cf保持引用</li>
+</ul>
+<h2 id="block"><a href="#block" class="headerlink" title="block"></a>block</h2><h4 id="block的本质？"><a href="#block的本质？" class="headerlink" title="block的本质？"></a>block的本质？</h4><p>block本质是一个指向结构体的指针,结构体中包含了代码块函数的指针，以及对block描述的结构体指针。执行block的时候，block拿到代码块函数的地址，然后传入block自身，进行执行。</p>
+<h4 id="block如果更改外部变量？"><a href="#block如果更改外部变量？" class="headerlink" title="block如果更改外部变量？"></a>block如果更改外部变量？</h4><p>使用<strong>block, 通过</strong>block,外部变量会被包装成一个结构体,结构体中包含外部变量的地址，外部变量结构体的地址会被传入block的结构体中，执行block的时候，block拿到代码块，然后传入block自身，以及外部变量结构体指针，进行执行。</p>
+<h4 id="注意点？"><a href="#注意点？" class="headerlink" title="注意点？"></a>注意点？</h4><p>block中一定要注意循环引用，当block中的代码块中强引用了一个self，self又强引用了block，就会造成循环引用，解决方法是使用weak指针。</p>
+<h4 id="UIView动画为什么不用考虑循环引用？"><a href="#UIView动画为什么不用考虑循环引用？" class="headerlink" title="UIView动画为什么不用考虑循环引用？"></a>UIView动画为什么不用考虑循环引用？</h4><p>因为没有造成互相引用， UIView的+方法，虽然强引用了self，但是self并没有强引用UIView。</p>
+<h2 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h2><h4 id="runtime的使用场景？"><a href="#runtime的使用场景？" class="headerlink" title="runtime的使用场景？"></a>runtime的使用场景？</h4><ul>
+<li>method swizzling</li>
+<li>使用关联对象在分类中添加属性</li>
+<li>字典转模型, 模型转字典</li>
+</ul>
+<h4 id="objc中向一个对象发送消息-obj-foo-和objc-msgSend-函数之间有什么关系？"><a href="#objc中向一个对象发送消息-obj-foo-和objc-msgSend-函数之间有什么关系？" class="headerlink" title="objc中向一个对象发送消息[obj foo]和objc_msgSend()函数之间有什么关系？"></a>objc中向一个对象发送消息[obj foo]和objc_msgSend()函数之间有什么关系？</h4><ul>
+<li>objc_msgSend(obj, @selector(foo))</li>
+</ul>
+<h4 id="什么时候会报unrecognized-selector的异常？"><a href="#什么时候会报unrecognized-selector的异常？" class="headerlink" title="什么时候会报unrecognized selector的异常？"></a>什么时候会报unrecognized selector的异常？</h4><ul>
+<li><ol>
+<li>根据sel查找imp</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>如果找不到, 进入resolveinstancemethod ， 增加方法 addMethod</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>如果没有增加方法，进入 快速消息转发 forwarding target , 返回需要转发给的哪个类</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>如果没有， 进入慢消息转发</li>
+</ol>
+</li>
+<li>4.1 methodSignature 方法签名</li>
+<li>4.2 forwading invocation</li>
+</ul>
+<h4 id="为什么oc可以做到method-swizzling？"><a href="#为什么oc可以做到method-swizzling？" class="headerlink" title="为什么oc可以做到method-swizzling？"></a>为什么oc可以做到method-swizzling？</h4><ul>
+<li>oc是一门动态语言，不是静态语言，动态语言在编译期间无法确定被调用的方法是哪一个，只有在运行期间动态查找。</li>
+<li><ul>
+<li>方法,通过objc_object中的isa找到objc_class类型的类对象class，在class中先查cache，后查方法列表，如果找不到，就使用class中super指针继续父类查找。</li>
+</ul>
+</li>
+<li><ul>
+<li>方法,通过class中的isa找到objc_class类型的原类对象meta class，在meta class中先查cache，后查方法列表，如果找不到，就使用meta class中super指针继续父类查找。</li>
+</ul>
+</li>
+<li>如果依然查找不到，进入方法转发 </li>
+<li><ul>
+<li>(BOOL)resolveClassMethod:(SEL)sel  <font color="#0099ff">(或者+ (BOOL)resolveInstanceMethod:(SEL)sel)</font></li>
+</ul>
+</li>
+<li><ul>
+<li>(id)forwardingTargetForSelector:(SEL)aSelector</li>
+</ul>
+</li>
+<li><ul>
+<li>(NSMethodSignature <em>)methodSignatureForSelector:(SEL)aSelector <font color="#0099ff">(或者 + (NSMethodSignature </font></em>)instanceMethodSignatureForSelector:(SEL)aSelector), 然后 - (void)forwardInvocation:(NSInvocation *)anInvocation</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)doesNotRecognizeSelector:(SEL)aSelector</li>
+</ul>
+</li>
+</ul>
+<h4 id="如果是c语言，如果实现方法替换？"><a href="#如果是c语言，如果实现方法替换？" class="headerlink" title="如果是c语言，如果实现方法替换？"></a>如果是c语言，如果实现方法替换？</h4><p>c语言是静态语言，无法实现</p>
+<h2 id="runloop"><a href="#runloop" class="headerlink" title="runloop"></a>runloop</h2><h4 id="runloop的使用场景？"><a href="#runloop的使用场景？" class="headerlink" title="runloop的使用场景？"></a>runloop的使用场景？</h4><ul>
+<li>常驻线程</li>
+<li>自动释放池</li>
+<li>NSTimer模式</li>
+</ul>
+<h2 id="第三方框架"><a href="#第三方框架" class="headerlink" title="第三方框架"></a>第三方框架</h2><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h4 id="设计原则？"><a href="#设计原则？" class="headerlink" title="设计原则？"></a>设计原则？</h4><ul>
+<li>单一职责原则</li>
+<li>依赖倒置原则</li>
+<li>开闭原则对修改关闭，对扩展开放</li>
+<li>里氏替换原则</li>
+<li>接口隔离原则</li>
+<li>迪米特法则</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/12/25/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" data-id="cll91frgt000heu4myhbwx9t7" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-block" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/12/12/block/">block</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/12/12/block/" class="article-date">
+  <time datetime="2018-12-12T07:21:24.000Z" itemprop="datePublished">2018-12-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <p>本篇简单探究一下block的一些底层原理：</p>
+<ul>
+<li>block的本质是什么</li>
+<li>__block的作用</li>
+<li>block的3种类型</li>
+</ul>
+<h2 id="block的本质是什么"><a href="#block的本质是什么" class="headerlink" title="block的本质是什么"></a>block的本质是什么</h2><p>首先简单写一段block代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello block"</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  block();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用clang指令进行代码转化:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ clang -rewrite-objc test.m</span><br></pre></td></tr></table></figure>
+<p>转化成了这样:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">main_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  __main_block_impl_0(<span class="keyword">void</span> *fp, struct __main_block_desc_0 *desc, <span class="keyword">int</span> flags=<span class="number">0</span>) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"hello block"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">size_t</span> reserved;</span><br><span class="line">  <span class="keyword">size_t</span> Block_size;</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; <span class="number">0</span>, <span class="keyword">sizeof</span>(struct __main_block_impl_0)&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">void</span> (*block)(<span class="keyword">void</span>) = ((<span class="keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA));</span><br><span class="line">  ((<span class="keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看上去好乱，不着急，我们先去掉强制类型转化的括号.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">void</span> (*block)(<span class="keyword">void</span>) = &amp;__main_block_impl_0(__main_block_func_0, &amp;__main_block_desc_0_DATA);</span><br><span class="line">  (((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这下清晰多了。我们可以看出一些东西:</p>
+<ul>
+<li><code>block</code>就是一个结构体指针, 指向<code>__main_block_impl_0</code>这个结构体</li>
+<li>这个结构体的初始化需要一些参数<ul>
+<li>代码块<code>__main_block_func_0</code>函数的地址 传递给 <code>Funcptr</code></li>
+<li>对<code>block</code>描述的<code>__main_block_desc_0</code>结构体类型的地址 传递给 <code>Desc</code></li>
+</ul>
+</li>
+</ul>
+<p>我们来看一下是如何调用的。<br>首先将<code>block</code>强制转化为<code>__block_impl *</code>类型。我们知道结构体<code>__main_block_impl_0</code>的内存布局的第一个位置是<code>__block_impl</code>. 所以转化之后是没有任何变化.只会影响指针的步长. 我们来看一下<code>__block_impl</code>的结构体是什么样的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> *isa;</span><br><span class="line">  <span class="keyword">int</span> Flags;</span><br><span class="line">  <span class="keyword">int</span> Reserved;</span><br><span class="line">  <span class="keyword">void</span> *FuncPtr;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>从<code>__main_block_impl_0</code>的构造函数中，我们知道代码块<code>__main_block_func_0</code>函数的地址传递给了 <code>FuncPtr</code><br>所以我们拿到<code>FuncPtr</code>直接执行，就完成了block的调用.</p>
+<h2 id="block的作用"><a href="#block的作用" class="headerlink" title="__block的作用"></a>__block的作用</h2><p>这里我们写几个例子实验一下.</p>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, a);</span><br><span class="line">  &#125;;</span><br><span class="line">  block();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>clang指令之后:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">main_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  __main_block_impl_0(<span class="keyword">void</span> *fp, struct __main_block_desc_0 *desc, <span class="keyword">int</span> _a, <span class="keyword">int</span> flags=<span class="number">0</span>) : a(_a) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</span><br><span class="line">  <span class="keyword">int</span> a = __cself-&gt;a; <span class="comment">// bound by copy</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d"</span>, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">size_t</span> reserved;</span><br><span class="line">  <span class="keyword">size_t</span> Block_size;</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; <span class="number">0</span>, <span class="keyword">sizeof</span>(struct __main_block_impl_0)&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">void</span> (*block)(<span class="keyword">void</span>) = ((<span class="keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, a));</span><br><span class="line">  ((<span class="keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意一下代码块<code>__main_block_func_0</code>函数中的执行:</p>
+<ul>
+<li>传递参数<code>__main_block_impl_0</code>结构体指针</li>
+<li>后去<code>__main_block_impl_0</code>中的成员变量a</li>
+</ul>
+<p>在看一下<code>__main_block_impl_0</code>结构体的变化</p>
+<ul>
+<li>多了一个成员变量a.</li>
+</ul>
+<p>所以我们知道基本数据类型在block中是值传递.</p>
+<h3 id="指针类型"><a href="#指针类型" class="headerlink" title="指针类型"></a>指针类型</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span>* a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, a);</span><br><span class="line">  &#125;;</span><br><span class="line">  block();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>clang指令之后:</p>
+<p>代码块<code>__main_block_func_0</code>函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</span><br><span class="line">  <span class="keyword">int</span> *a = __cself-&gt;a; <span class="comment">// bound by copy</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d"</span>, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和<code>__main_block_impl_0</code>结构体</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">main_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  <span class="keyword">int</span> *a;</span><br><span class="line">  __main_block_impl_0(<span class="keyword">void</span> *fp, struct __main_block_desc_0 *desc, <span class="keyword">int</span> *_a, <span class="keyword">int</span> flags=<span class="number">0</span>) : a(_a) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我们可以看出指针类型是指针传递.</p>
+<h3 id="block"><a href="#block" class="headerlink" title="__block"></a>__block</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  __block <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">void</span> (^block)(<span class="keyword">void</span>) = ^&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, a);</span><br><span class="line">  &#125;;</span><br><span class="line">  block();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>clang指令之后,这就精彩了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">Block_byref_a_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">void</span> *__isa;</span><br><span class="line">  __Block_byref_a_0 *__forwarding;</span><br><span class="line">  <span class="keyword">int</span> __flags;</span><br><span class="line">  <span class="keyword">int</span> __size;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">main_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  __Block_byref_a_0 *a; <span class="comment">// by ref</span></span><br><span class="line">  __main_block_impl_0(<span class="keyword">void</span> *fp, struct __main_block_desc_0 *desc, __Block_byref_a_0 *_a, <span class="keyword">int</span> flags=<span class="number">0</span>) : a(_a-&gt;__forwarding) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</span><br><span class="line">  __Block_byref_a_0 *a = __cself-&gt;a; <span class="comment">// bound by ref</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d"</span>, (a-&gt;__forwarding-&gt;a));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> __<span class="title">main_block_desc_0</span> &#123;</span></span><br><span class="line">  <span class="keyword">size_t</span> reserved;</span><br><span class="line">  <span class="keyword">size_t</span> Block_size;</span><br><span class="line">  <span class="keyword">void</span> (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);</span><br><span class="line">  <span class="keyword">void</span> (*dispose)(struct __main_block_impl_0*);</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; <span class="number">0</span>, <span class="keyword">sizeof</span>(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  __attribute__((__blocks__(byref))) __Block_byref_a_0 a = &#123;(<span class="keyword">void</span>*)<span class="number">0</span>,(__Block_byref_a_0 *)&amp;a, <span class="number">0</span>, <span class="keyword">sizeof</span>(__Block_byref_a_0), <span class="number">0</span>&#125;;</span><br><span class="line">  <span class="keyword">void</span> (*block)(<span class="keyword">void</span>) = ((<span class="keyword">void</span> (*)())&amp;__main_block_impl_0((<span class="keyword">void</span> *)__main_block_func_0, &amp;__main_block_desc_0_DATA, (__Block_byref_a_0 *)&amp;a, <span class="number">570425344</span>));</span><br><span class="line">  ((<span class="keyword">void</span> (*)(__block_impl *))((__block_impl *)block)-&gt;FuncPtr)((__block_impl *)block);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看出</p>
+<ul>
+<li><code>__block</code>修饰的变量<code>a</code>被包装成了一个<code>__Block_byref_a_0</code>结构体.</li>
+<li><code>__Block_byref_a_0</code>中的<code>__forwarding</code>指向<code>a</code>的地址.</li>
+<li><code>__main_block_impl_0</code>结构体多了一个变量<code>__Block_byref_a_0</code>的指针.</li>
+</ul>
+<p>结论:</p>
+<ul>
+<li>__block 可以将修饰的对象包装成结构体进行指针传递</li>
+<li>__block 是基本数据类型拥有指针类型传递的特性.</li>
+</ul>
+<h2 id="block的3种类型"><a href="#block的3种类型" class="headerlink" title="block的3种类型"></a>block的3种类型</h2><ul>
+<li>StackBlock 栈区</li>
+<li>GlobalBlock 全局区</li>
+<li>MallocBlock 堆区</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/12/12/block/" data-id="cll91frgc0002eu4mxm82lnhn" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-c-server" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/10/16/c-server/">c_server</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/10/16/c-server/" class="article-date">
+  <time datetime="2018-10-16T04:40:44.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <p>今天研究了一下服务器的实现原理</p>
+<h3 id="server-c"><a href="#server-c" class="headerlink" title="server.c"></a>server.c</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/un.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PROT 8080  <span class="comment">// 服务器监听端口</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> server_socket = socket(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_addr</span>;</span></span><br><span class="line">	<span class="built_in">memset</span>(&amp;server_addr, <span class="number">0</span>, <span class="keyword">sizeof</span>(server_addr));</span><br><span class="line">	server_addr.sin_family = AF_INET;</span><br><span class="line">	server_addr.sin_addr.s_addr = htonl(INADDR_ANY);</span><br><span class="line">	server_addr.sin_port = htons(PROT);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// bind </span></span><br><span class="line">	bind(server_socket, (struct sockaddr *)&amp;server_addr, <span class="keyword">sizeof</span>(server_addr));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// listen</span></span><br><span class="line">	listen(server_socket, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="comment">// accept</span></span><br><span class="line">		<span class="keyword">int</span> client_socket = accept(server_socket, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// read</span></span><br><span class="line">		<span class="keyword">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">		read(client_socket, buf, <span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, buf);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// write </span></span><br><span class="line">		<span class="comment">// 响应行</span></span><br><span class="line">		<span class="keyword">char</span> status[] = <span class="string">"HTTP/1.0 200 OK\r\n"</span>;</span><br><span class="line">		<span class="comment">// 响应头</span></span><br><span class="line">		<span class="keyword">char</span> header[] = <span class="string">"Server: sunner-server\r\nContent-Type: text/html;charset=utf-8\r\n\r\n"</span>;</span><br><span class="line">		<span class="comment">// 响应体</span></span><br><span class="line">		<span class="keyword">char</span> body[] = <span class="string">"&lt;html&gt;&lt;head&gt;&lt;title&gt;sunner-server&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;hello world&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"</span>;</span><br><span class="line"></span><br><span class="line">		write(client_socket, status, <span class="keyword">sizeof</span>(status));</span><br><span class="line">		write(client_socket, header, <span class="keyword">sizeof</span>(header));</span><br><span class="line">		write(client_socket, body, <span class="keyword">sizeof</span>(body));</span><br><span class="line"></span><br><span class="line">		close(client_socket);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	close(server_socket);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="服务器执行"><a href="#服务器执行" class="headerlink" title="服务器执行"></a>服务器执行</h3><p><img src="/2018/10/16/c-server/terminal.png" alt="screenshot"></p>
+<h3 id="浏览器测试"><a href="#浏览器测试" class="headerlink" title="浏览器测试"></a>浏览器测试</h3><p><img src="/2018/10/16/c-server/broser.png" alt="screenshot"></p>
+<h3 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h3><p><img src="/2018/10/16/c-server/wireshark.png" alt="screenshot"></p>
+<h3 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h3><p><a href="c-server/c_server.zip">code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/10/16/c-server/" data-id="cll91frge0003eu4m6nd372gc" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-duck" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/10/14/duck/">duck</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/10/14/duck/" class="article-date">
+  <time datetime="2018-10-14T04:42:49.000Z" itemprop="datePublished">2018-10-14</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <p>这是一只神奇的鸭子</p>
+<h3 id="gif2txt-gif-py"><a href="#gif2txt-gif-py" class="headerlink" title="gif2txt_gif.py"></a>gif2txt_gif.py</h3><p>gif转多个png文件，多个txt文件，多个txt_png文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gif2txt_gif duck.gif</span><br></pre></td></tr></table></figure>
+<h3 id="png2txt-png-py"><a href="#png2txt-png-py" class="headerlink" title="png2txt_png.py"></a>png2txt_png.py</h3><p>png转txt_png文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ png2txt_png duck.png</span><br></pre></td></tr></table></figure>
+<h3 id="神奇的鸭子"><a href="#神奇的鸭子" class="headerlink" title="神奇的鸭子"></a>神奇的鸭子</h3><p><a href="duck/create.gif">字符画鸭子</a></p>
+<h3 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h3><p><a href="duck/duck.zip">code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/10/14/duck/" data-id="cll91frgg0005eu4mz2sd0ocn" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-博客搭建" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/10/13/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/10/13/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2018-10-13T04:39:16.000Z" itemprop="datePublished">2018-10-13</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <p>闲暇之余，想搭建一个属于自己的网站，用来记录自己的学习过程，以及自己的学习心得。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>  目前比较流行的写博客的格式都是markdown，我希望实现的效果是编辑一篇.md文档，直接commit-push就万事大吉。</p>
+<p>  首先确定使用GithubPage来搭建，GithubPage会首先解析index.html，所以可以在index.html中来做文章。</p>
+<p>  bootstrap是一个流行的前端框架，我准备利用bootstrap来布局样式。</p>
+<p>  marked.js是一个markdown解析库，简单来说，就是可以把.md文件解析为html。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>.md里面的链接地址写成?md=<em>.md这种格式，这样以来，md=</em>.md就会变成get请求的参数，url地址就会变成<a href="https://sunnercc.github.io/index.html?md=*.md" target="_blank" rel="noopener">https://sunnercc.github.io/index.html?md=*.md</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello-world [link](?md=hello-world.md)</span><br></pre></td></tr></table></figure></p>
+<p>取出url地址参数中md对应的value就可以获取到文件名，然后拼接需要解析的.md文件的请求路径url。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var url = &quot;https://raw.githubusercontent.com/sunnercc/sunnercc.github.io/master/post/about.md&quot;</span><br><span class="line">var param = location.search.split(&quot;?md=&quot;)[1]</span><br><span class="line">if (param) &#123;</span><br><span class="line">  url = &quot;https://raw.githubusercontent.com/sunnercc/sunnercc.github.io/master/post/&quot; + param</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求拼接后的url，获取文件内容，然后利用marked解析获取结果，替换content标签中的内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xmlhttp = new XMLHttpRequest();</span><br><span class="line">xmlhttp.open(&quot;GET&quot;, url, false);</span><br><span class="line">xmlhttp.send();</span><br><span class="line">document.getElementById(&apos;content&apos;).innerHTML = marked(xmlhttp.responseText);</span><br></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>主要是利用marked来解析.md文档生成html，利用bootstrap搭建做了一些简单样式，<br>还可以利用highlight.js来实现markdown代码块的高亮显示，但是我觉得太丑了，所以就没有使用.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/10/13/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-id="cll91frgr000feu4m3b0a5tbx" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-markdown-highlight" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/09/28/markdown-highlight/">markdown-highlight</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/09/28/markdown-highlight/" class="article-date">
+  <time datetime="2018-09-28T04:38:10.000Z" itemprop="datePublished">2018-09-28</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <table>
+<thead>
+<tr>
+<th>language</th>
+<th>key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1C</td>
+<td>1c</td>
+</tr>
+<tr>
+<td>ActionScript</td>
+<td>actionscript</td>
+</tr>
+<tr>
+<td>Apache</td>
+<td>apache</td>
+</tr>
+<tr>
+<td>AppleScript</td>
+<td>applescript</td>
+</tr>
+<tr>
+<td>AsciiDoc</td>
+<td>asciidoc</td>
+</tr>
+<tr>
+<td>AspectJ</td>
+<td>asciidoc</td>
+</tr>
+<tr>
+<td>AutoHotkey</td>
+<td>autohotkey</td>
+</tr>
+<tr>
+<td>AVR Assembler</td>
+<td>avrasm</td>
+</tr>
+<tr>
+<td>Axapta</td>
+<td>axapta</td>
+</tr>
+<tr>
+<td>Bash</td>
+<td>bash</td>
+</tr>
+<tr>
+<td>BrainFuck</td>
+<td>brainfuck</td>
+</tr>
+<tr>
+<td>Cap’n Proto</td>
+<td>capnproto</td>
+</tr>
+<tr>
+<td>Clojure REPL</td>
+<td>clojure</td>
+</tr>
+<tr>
+<td>Clojure</td>
+<td>clojure</td>
+</tr>
+<tr>
+<td>CMake</td>
+<td>cmake</td>
+</tr>
+<tr>
+<td>CoffeeScript</td>
+<td>coffeescript</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>cpp</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>cs</td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>css</td>
+</tr>
+<tr>
+<td>D</td>
+<td>d</td>
+</tr>
+<tr>
+<td>Dart</td>
+<td>d</td>
+</tr>
+<tr>
+<td>Delphi</td>
+<td>delphi</td>
+</tr>
+<tr>
+<td>Diff</td>
+<td>diff</td>
+</tr>
+<tr>
+<td>Django</td>
+<td>django</td>
+</tr>
+<tr>
+<td>DOS.bat</td>
+<td>dos</td>
+</tr>
+<tr>
+<td>Dust</td>
+<td>dust</td>
+</tr>
+<tr>
+<td>Elixir</td>
+<td>elixir</td>
+</tr>
+<tr>
+<td>ERB(Embedded Ruby)</td>
+<td>erb</td>
+</tr>
+<tr>
+<td>Erlang REPL</td>
+<td>erlang-repl</td>
+</tr>
+<tr>
+<td>Erlang</td>
+<td>erlang</td>
+</tr>
+<tr>
+<td>FIX</td>
+<td>fix</td>
+</tr>
+<tr>
+<td>F#</td>
+<td>fsharp</td>
+</tr>
+<tr>
+<td>G-code(ISO 6983)</td>
+<td>gcode</td>
+</tr>
+<tr>
+<td>Gherkin</td>
+<td>gherkin</td>
+</tr>
+<tr>
+<td>GLSL</td>
+<td>glsl</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>go</td>
+</tr>
+<tr>
+<td>Gradle</td>
+<td>gradle</td>
+</tr>
+<tr>
+<td>Groovy</td>
+<td>groovy</td>
+</tr>
+<tr>
+<td>Haml</td>
+<td>haml</td>
+</tr>
+<tr>
+<td>Handlebars</td>
+<td>handlebars</td>
+</tr>
+<tr>
+<td>Haskell</td>
+<td>haskell</td>
+</tr>
+<tr>
+<td>Haxe</td>
+<td>haxe</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>html</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>http</td>
+</tr>
+<tr>
+<td>Ini file</td>
+<td>ini</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>java</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>javascript</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>json</td>
+</tr>
+<tr>
+<td>Lasso</td>
+<td>lasso</td>
+</tr>
+<tr>
+<td>Less</td>
+<td>less</td>
+</tr>
+<tr>
+<td>Lisp</td>
+<td>lisp</td>
+</tr>
+<tr>
+<td>LiveCode</td>
+<td>livecodeserver</td>
+</tr>
+<tr>
+<td>LiveScript</td>
+<td>livescript</td>
+</tr>
+<tr>
+<td>Lua</td>
+<td>lua</td>
+</tr>
+<tr>
+<td>Makefile</td>
+<td>makefile</td>
+</tr>
+<tr>
+<td>Markdown</td>
+<td>markdown</td>
+</tr>
+<tr>
+<td>Mathematica</td>
+<td>mathematica</td>
+</tr>
+<tr>
+<td>Matlab</td>
+<td>matlab</td>
+</tr>
+<tr>
+<td>MEL (Maya Embedded Language)</td>
+<td>mel</td>
+</tr>
+<tr>
+<td>Mercury</td>
+<td>mercury</td>
+</tr>
+<tr>
+<td>Mizar</td>
+<td>mizar</td>
+</tr>
+<tr>
+<td>Monkey</td>
+<td>monkey</td>
+</tr>
+<tr>
+<td>Nginx</td>
+<td>nginx</td>
+</tr>
+<tr>
+<td>Nimrod</td>
+<td>nimrod</td>
+</tr>
+<tr>
+<td>Nix</td>
+<td>nix</td>
+</tr>
+<tr>
+<td>NSIS</td>
+<td>nsis</td>
+</tr>
+<tr>
+<td>Objective C</td>
+<td>objectivec</td>
+</tr>
+<tr>
+<td>OCaml</td>
+<td>ocaml</td>
+</tr>
+<tr>
+<td>Oxygene</td>
+<td>oxygene</td>
+</tr>
+<tr>
+<td>Parser 3</td>
+<td>parser3</td>
+</tr>
+<tr>
+<td>Perl</td>
+<td>perl</td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>php</td>
+</tr>
+<tr>
+<td>PowerShell</td>
+<td>powershell</td>
+</tr>
+<tr>
+<td>Processing</td>
+<td>processing</td>
+</tr>
+<tr>
+<td>Python’s profiler output</td>
+<td>profile</td>
+</tr>
+<tr>
+<td>Protocol Buffers</td>
+<td>protobuf</td>
+</tr>
+<tr>
+<td>Puppet</td>
+<td>puppet</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>python</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>q</td>
+</tr>
+<tr>
+<td>R</td>
+<td>r</td>
+</tr>
+<tr>
+<td>RenderMan RIB</td>
+<td>rib</td>
+</tr>
+<tr>
+<td>Roboconf</td>
+<td>roboconf</td>
+</tr>
+<tr>
+<td>RenderMan RSL</td>
+<td>rsl</td>
+</tr>
+<tr>
+<td>Ruby</td>
+<td>ruby</td>
+</tr>
+<tr>
+<td>Oracle Rules Language</td>
+<td>ruleslanguage</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>rust</td>
+</tr>
+<tr>
+<td>Scala</td>
+<td>scala</td>
+</tr>
+<tr>
+<td>Scheme</td>
+<td>scheme</td>
+</tr>
+<tr>
+<td>Scilab</td>
+<td>scilab</td>
+</tr>
+<tr>
+<td>SCSS</td>
+<td>scss</td>
+</tr>
+<tr>
+<td>Smali</td>
+<td>smali</td>
+</tr>
+<tr>
+<td>SmallTalk</td>
+<td>smalltalk</td>
+</tr>
+<tr>
+<td>SML</td>
+<td>sml</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>sql</td>
+</tr>
+<tr>
+<td>Stata</td>
+<td>stata</td>
+</tr>
+<tr>
+<td>STEP Part21(ISO 10303-21)</td>
+<td>step21</td>
+</tr>
+<tr>
+<td>Stylus</td>
+<td>stylus</td>
+</tr>
+<tr>
+<td>Swift</td>
+<td>swift</td>
+</tr>
+<tr>
+<td>Tcl</td>
+<td>tcl</td>
+</tr>
+<tr>
+<td>Tex</td>
+<td>tex</td>
+</tr>
+<tr>
+<td>text</td>
+<td>text/plain</td>
+</tr>
+<tr>
+<td>Thrift</td>
+<td>thrift</td>
+</tr>
+<tr>
+<td>Twig</td>
+<td>twig</td>
+</tr>
+<tr>
+<td>TypeScript</td>
+<td>typescript</td>
+</tr>
+<tr>
+<td>Vala</td>
+<td>vala</td>
+</tr>
+<tr>
+<td>VB.NET</td>
+<td>vbnet</td>
+</tr>
+<tr>
+<td>VBScript in HTML</td>
+<td>vbscript-html</td>
+</tr>
+<tr>
+<td>VBScript</td>
+<td>vbscript</td>
+</tr>
+<tr>
+<td>Verilog</td>
+<td>verilog</td>
+</tr>
+<tr>
+<td>VHDL</td>
+<td>vhdl</td>
+</tr>
+<tr>
+<td>Vim Script</td>
+<td>vim</td>
+</tr>
+<tr>
+<td>Intel x86 Assembly</td>
+<td>x86asm</td>
+</tr>
+<tr>
+<td>XL</td>
+<td>xl</td>
+</tr>
+<tr>
+<td>XML</td>
+<td>xml</td>
+</tr>
+<tr>
+<td>YAML</td>
+<td>yml</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/09/28/markdown-highlight/" data-id="cll91frgm0009eu4m1n87p459" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-associations" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/08/05/associations/">associations</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/08/05/associations/" class="article-date">
+  <time datetime="2018-08-05T03:10:48.000Z" itemprop="datePublished">2018-08-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * Sets an associated value for a given object using a given key and association policy.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param object The source object for the association.</span></span><br><span class="line"><span class="comment"> * @param key The key for the association.</span></span><br><span class="line"><span class="comment"> * @param value The value to associate with the key key for object. Pass nil to clear an existing association.</span></span><br><span class="line"><span class="comment"> * @param policy The policy for the association. For possible values, see “Associative Object Behaviors.”</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @see objc_setAssociatedObject</span></span><br><span class="line"><span class="comment"> * @see objc_removeAssociatedObjects</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">OBJC_EXPORT <span class="keyword">void</span></span><br><span class="line">objc_setAssociatedObject(<span class="keyword">id</span> _Nonnull object, <span class="keyword">const</span> <span class="keyword">void</span> * _Nonnull key,</span><br><span class="line">                         <span class="keyword">id</span> _Nullable value, objc_AssociationPolicy policy)</span><br><span class="line">    OBJC_AVAILABLE(<span class="number">10.6</span>, <span class="number">3.1</span>, <span class="number">9.0</span>, <span class="number">1.0</span>, <span class="number">2.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * Returns the value associated with a given object for a given key.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param object The source object for the association.</span></span><br><span class="line"><span class="comment"> * @param key The key for the association.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @return The value associated with the key \e key for \e object.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @see objc_setAssociatedObject</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">OBJC_EXPORT <span class="keyword">id</span> _Nullable</span><br><span class="line">objc_getAssociatedObject(<span class="keyword">id</span> _Nonnull object, <span class="keyword">const</span> <span class="keyword">void</span> * _Nonnull key)</span><br><span class="line">    OBJC_AVAILABLE(<span class="number">10.6</span>, <span class="number">3.1</span>, <span class="number">9.0</span>, <span class="number">1.0</span>, <span class="number">2.0</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/08/05/associations/associations.png" alt></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> AssociationsManager &#123;</span><br><span class="line">    <span class="comment">// associative references: object pointer -&gt; PtrPtrHashMap.</span></span><br><span class="line">    <span class="keyword">static</span> AssociationsHashMap *_map;</span><br><span class="line">public:</span><br><span class="line">    AssociationsManager()   &#123; AssociationsManagerLock.lock(); &#125;</span><br><span class="line">    ~AssociationsManager()  &#123; AssociationsManagerLock.unlock(); &#125;</span><br><span class="line">    </span><br><span class="line">    AssociationsHashMap &amp;associations() &#123;</span><br><span class="line">        <span class="keyword">if</span> (_map == <span class="literal">NULL</span>)</span><br><span class="line">            _map = new AssociationsHashMap();</span><br><span class="line">        <span class="keyword">return</span> *_map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">AssociationsHashMap *AssociationsManager::_map = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// expanded policy bits.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> &#123; </span><br><span class="line">    OBJC_ASSOCIATION_SETTER_ASSIGN      = <span class="number">0</span>,</span><br><span class="line">    OBJC_ASSOCIATION_SETTER_RETAIN      = <span class="number">1</span>,</span><br><span class="line">    OBJC_ASSOCIATION_SETTER_COPY        = <span class="number">3</span>,            <span class="comment">// <span class="doctag">NOTE:</span>  both bits are set, so we can simply test 1 bit in releaseValue below.</span></span><br><span class="line">    OBJC_ASSOCIATION_GETTER_READ        = (<span class="number">0</span> &lt;&lt; <span class="number">8</span>), </span><br><span class="line">    OBJC_ASSOCIATION_GETTER_RETAIN      = (<span class="number">1</span> &lt;&lt; <span class="number">8</span>), </span><br><span class="line">    OBJC_ASSOCIATION_GETTER_AUTORELEASE = (<span class="number">2</span> &lt;&lt; <span class="number">8</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">id</span> _object_get_associative_reference(<span class="keyword">id</span> object, <span class="keyword">void</span> *key) &#123;</span><br><span class="line">    <span class="keyword">id</span> value = <span class="literal">nil</span>;</span><br><span class="line">    uintptr_t policy = OBJC_ASSOCIATION_ASSIGN;</span><br><span class="line">    &#123;</span><br><span class="line">        AssociationsManager manager;</span><br><span class="line">        AssociationsHashMap &amp;associations(manager.associations());</span><br><span class="line">        disguised_ptr_t disguised_object = DISGUISE(object);</span><br><span class="line">        AssociationsHashMap::iterator i = associations.find(disguised_object);</span><br><span class="line">        <span class="keyword">if</span> (i != associations.end()) &#123;</span><br><span class="line">            ObjectAssociationMap *refs = i-&gt;second;</span><br><span class="line">            ObjectAssociationMap::iterator j = refs-&gt;find(key);</span><br><span class="line">            <span class="keyword">if</span> (j != refs-&gt;end()) &#123;</span><br><span class="line">                ObjcAssociation &amp;entry = j-&gt;second;</span><br><span class="line">                value = entry.value();</span><br><span class="line">                policy = entry.policy();</span><br><span class="line">                <span class="keyword">if</span> (policy &amp; OBJC_ASSOCIATION_GETTER_RETAIN) &#123;</span><br><span class="line">                    objc_retain(value);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (value &amp;&amp; (policy &amp; OBJC_ASSOCIATION_GETTER_AUTORELEASE)) &#123;</span><br><span class="line">        objc_autorelease(value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/08/05/associations/" data-id="cll91frga0001eu4mxpn4tih2" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-runtime" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/07/05/runtime/">runtime</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/07/05/runtime/" class="article-date">
+  <time datetime="2018-07-05T03:12:39.000Z" itemprop="datePublished">2018-07-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Types */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !OBJC_TYPES_DEFINED</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// An opaque type that represents a method in a class definition.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_method *Method;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// An opaque type that represents an instance variable.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_ivar *Ivar;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// An opaque type that represents a category.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_category *Category;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// An opaque type that represents an Objective-C declared property.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_property *objc_property_t;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_class &#123;</span><br><span class="line">    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !__OBJC2__</span></span><br><span class="line">    Class _Nullable super_class                              OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * _Nonnull name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">long</span> version                                             OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">long</span> info                                                OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">long</span> instance_size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_ivar_list * _Nullable ivars                  OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_list * _Nullable * _Nullable methodLists                    OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_cache * _Nonnull cache                       OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">&#125; OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="comment">/* Use `Class` instead of `struct objc_class *` */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __OBJC__</span></span><br><span class="line"><span class="class"><span class="keyword">@class</span> <span class="title">Protocol</span>;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_object Protocol;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// Defines a method</span></span><br><span class="line"><span class="keyword">struct</span> objc_method_description &#123;</span><br><span class="line">    SEL _Nullable name;               <span class="comment">/**&lt; The name of the method */</span></span><br><span class="line">    <span class="keyword">char</span> * _Nullable types;           <span class="comment">/**&lt; The types of the method arguments */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// Defines a property attribute</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * _Nonnull name;           <span class="comment">/**&lt; The name of the attribute */</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * _Nonnull value;          <span class="comment">/**&lt; The value of the attribute (usually empty) */</span></span><br><span class="line">&#125; objc_property_attribute_t;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_method_description_list &#123;</span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_description list[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_protocol_list &#123;</span><br><span class="line">    <span class="keyword">struct</span> objc_protocol_list * _Nullable next;</span><br><span class="line">    <span class="keyword">long</span> count;</span><br><span class="line">    __<span class="keyword">unsafe_unretained</span> Protocol * _Nullable list[<span class="number">1</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_category &#123;</span><br><span class="line">    <span class="keyword">char</span> * _Nonnull category_name                            OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">char</span> * _Nonnull class_name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_list * _Nullable instance_methods     OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_list * _Nullable class_methods        OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">struct</span> objc_protocol_list * _Nullable protocols          OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_ivar &#123;</span><br><span class="line">    <span class="keyword">char</span> * _Nullable ivar_name                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">char</span> * _Nullable ivar_type                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">int</span> ivar_offset                                          OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __LP64__</span></span><br><span class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_ivar_list &#123;</span><br><span class="line">    <span class="keyword">int</span> ivar_count                                           OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __LP64__</span></span><br><span class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">/* variable length structure */</span></span><br><span class="line">    <span class="keyword">struct</span> objc_ivar ivar_list[<span class="number">1</span>]                            OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_method &#123;</span><br><span class="line">    SEL _Nonnull method_name                                 OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">char</span> * _Nullable method_types                            OBJC2_UNAVAILABLE;</span><br><span class="line">    IMP _Nonnull method_imp                                  OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_method_list &#123;</span><br><span class="line">    <span class="keyword">struct</span> objc_method_list * _Nullable obsolete             OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> method_count                                         OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __LP64__</span></span><br><span class="line">    <span class="keyword">int</span> space                                                OBJC2_UNAVAILABLE;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">/* variable length structure */</span></span><br><span class="line">    <span class="keyword">struct</span> objc_method method_list[<span class="number">1</span>]                        OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_symtab *Symtab                           OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_symtab &#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> sel_ref_cnt                                OBJC2_UNAVAILABLE;</span><br><span class="line">    SEL _Nonnull * _Nullable refs                            OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> cls_def_cnt                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> cat_def_cnt                               OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">void</span> * _Nullable defs[<span class="number">1</span>] <span class="comment">/* variable size */</span>             OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_cache *Cache                             OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_BUCKET_NAME(B)  ((B)-&gt;method_name)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_BUCKET_IMP(B)   ((B)-&gt;method_imp)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_BUCKET_VALID(B) (B)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __LP64__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_HASH(sel, mask) (((uintptr_t)(sel)&gt;&gt;2) &amp; (mask))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CACHE_HASH(sel, mask) (((unsigned int)((uintptr_t)(sel)&gt;&gt;3)) &amp; (mask))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="keyword">struct</span> objc_cache &#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> mask <span class="comment">/* total = mask + 1 */</span>                 OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> occupied                                    OBJC2_UNAVAILABLE;</span><br><span class="line">    Method _Nullable buckets[<span class="number">1</span>]                              OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> objc_module *Module                           OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_module &#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> version                                    OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> size                                       OBJC2_UNAVAILABLE;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> * _Nullable name                              OBJC2_UNAVAILABLE;</span><br><span class="line">    Symtab _Nullable symtab                                  OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;                                                            OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> objc_method_list;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/07/05/runtime/instance%26class%26metaclass.png" alt></p>
+<p><img src="/2018/07/05/runtime/isa%26superclass.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/07/05/runtime/" data-id="cll91frgn000beu4mub4doeyc" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-autoreleasePoll" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/06/05/autoreleasePoll/">autoreleasePoll</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/06/05/autoreleasePoll/" class="article-date">
+  <time datetime="2018-06-05T03:11:00.000Z" itemprop="datePublished">2018-06-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <p>苹果的内存管理机制(ARC)中有一个很有趣的东西-autoreleasePoll.可以延迟释放对象.抽出点时间来探究一下, 探究如下内容:</p>
+<ul>
+<li>@autoreleasePoll{}的本质是什么</li>
+<li>autoreleasePoll是通过什么对象来实现的</li>
+<li>AutoreleasePoolPage的数据结构</li>
+<li>AutoreleasePoolPage如何实现autorelease对象的存储</li>
+<li>AutoreleasePoolPage如何释放对象</li>
+<li>POOL_BOUNDARY (哨兵对象)是什么</li>
+</ul>
+<h2 id="autoreleasePoll-的本质是什么"><a href="#autoreleasePoll-的本质是什么" class="headerlink" title="@autoreleasePoll{}的本质是什么"></a>@autoreleasePoll{}的本质是什么</h2><p>首先写一段使用了autoreleasepoll的代码, main.m：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"hello world"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后使用终端命令编译成c++代码 main.cpp：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ clang -rewrite-objc main.m</span><br></pre></td></tr></table></figure>
+<p>我在main.cpp中的最后面找到了下面这段代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">/* @autoreleasepool */</span> &#123; __AtAutoreleasePool __autoreleasepool; </span><br><span class="line">    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_98_x72bq3s93xb7g9w9qjqnrj8r0000gn_T_main_9f94b6_mi_0);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">AtAutoreleasePool</span> &#123;</span></span><br><span class="line">  __AtAutoreleasePool() &#123;atautoreleasepoolobj = objc_autoreleasePoolPush();&#125;</span><br><span class="line">  ~__AtAutoreleasePool() &#123;objc_autoreleasePoolPop(atautoreleasepoolobj);&#125;</span><br><span class="line">  <span class="keyword">void</span> * atautoreleasepoolobj;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>苹果在编译器将代码编译成了如上代码.在大括号开始的时候生成<code>__AtAutoreleasePool</code>对象, 会执行初始化方法<code>__AtAutoreleasePool()</code>,在大括号结束的时候，会释放 <code>__AtAutoreleasePool</code>对象， 会执行析构方法<code>~__AtAutoreleasePool()</code>.</p>
+<h2 id="autoreleasePoll是通过什么对象来实现的"><a href="#autoreleasePoll是通过什么对象来实现的" class="headerlink" title="autoreleasePoll是通过什么对象来实现的"></a>autoreleasePoll是通过什么对象来实现的</h2><p>通过上述的<code>__AtAutoreleasePool</code>的结构体.我们知道:</p>
+<ul>
+<li>objc_autoreleasePoolPush() 生成atautoreleasepoolobj对象.</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> *</span><br><span class="line">objc_autoreleasePoolPush(<span class="keyword">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> AutoreleasePoolPage::push();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>objc_autoreleasePoolPop() 释放atautoreleasepoolobj对象.</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">objc_autoreleasePoolPop(<span class="keyword">void</span> *ctxt)</span><br><span class="line">&#123;</span><br><span class="line">  AutoreleasePoolPage::pop(ctxt);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们知道了<code>autoreleasePoll</code>的实现肯定和<code>AutoreleasePoolPage</code>有关系</p>
+<h2 id="AutoreleasePoolPage的数据结构"><a href="#AutoreleasePoolPage的数据结构" class="headerlink" title="AutoreleasePoolPage的数据结构"></a>AutoreleasePoolPage的数据结构</h2><p>下面我们来看一下<code>AutoreleasePoolPage</code>类定义，了解一下他的数据结构是怎样的.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutoreleasePoolPage</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> POOL_BOUNDARY nil</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">size_t</span> <span class="keyword">const</span> SIZE = PAGE_MAX_SIZE</span><br><span class="line">  <span class="keyword">magic_t</span> <span class="keyword">const</span> magic;</span><br><span class="line">  id *next;</span><br><span class="line">  <span class="keyword">pthread_t</span> <span class="keyword">const</span> thread;</span><br><span class="line">  AutoreleasePoolPage * <span class="keyword">const</span> parent;</span><br><span class="line">  AutoreleasePoolPage *child;</span><br><span class="line">  <span class="keyword">uint32_t</span> <span class="keyword">const</span> depth;</span><br><span class="line">  <span class="keyword">uint32_t</span> hiwat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>POOL_BOUNDARY : 哨兵对象</li>
+<li>SIZE : AutoreleasePoolPage的最大容量 (4096)</li>
+<li>magic : 完整性校验</li>
+<li>thread : 保存了当前page所在的线程</li>
+<li>next :  存储autorelease对象</li>
+<li>parent : 指向父节点的指针</li>
+<li>child : 指向子节点的指针</li>
+</ul>
+<p>可以看出，AutoreleasePoolPage是一个双向链表</p>
+<p><img src="/2018/06/05/autoreleasePoll/autoreleasepoll0.png" alt></p>
+<h2 id="AutoreleasePoolPage如何实现autorelease对象的存储"><a href="#AutoreleasePoolPage如何实现autorelease对象的存储" class="headerlink" title="AutoreleasePoolPage如何实现autorelease对象的存储"></a>AutoreleasePoolPage如何实现autorelease对象的存储</h2><p>要想知道如何实现<code>autorelease</code>对象的存储，需要知道<code>AutoreleasePoolPage</code>的<code>push</code>方法的实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> *<span class="title">push</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> autoreleaseFast(POOL_BOUNDARY);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里看一下autoreleaseFast这个方法。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> id *<span class="title">autoreleaseFast</span><span class="params">(id obj)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  AutoreleasePoolPage *page = hotPage();</span><br><span class="line">  <span class="keyword">if</span> (page &amp;&amp; !page-&gt;full()) &#123;</span><br><span class="line">    <span class="keyword">return</span> page-&gt;add(obj);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (page) &#123;</span><br><span class="line">    <span class="keyword">return</span> autoreleaseFullPage(obj, page);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> autoreleaseNoPage(obj);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里分为了三种情况</p>
+<ul>
+<li>page存在，并且page没有满。 <code>return page-&gt;add(obj);</code></li>
+<li>page存在，但是page满了。 <code>return autoreleaseFullPage(obj, page);</code></li>
+<li>page不存在。 <code>return autoreleaseNoPage(obj);</code></li>
+</ul>
+<p>###第一种情况:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">id *<span class="title">add</span><span class="params">(id obj)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  unprotect();</span><br><span class="line">  id *ret = next;    </span><br><span class="line">  *next++ = obj;</span><br><span class="line">  protect();</span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>*next++ = obj</code> 这句话的意思是: next指针指向obj,然后next指针+1.说明苹果是通过这种方式将autorelease对象存储的。</p>
+<p>###第二种情况:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> __attribute__((noinline))</span><br><span class="line"><span class="function">id *<span class="title">autoreleaseFullPage</span><span class="params">(id obj, AutoreleasePoolPage *page)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (page-&gt;child) page = page-&gt;child;</span><br><span class="line">    <span class="keyword">else</span> page = <span class="keyword">new</span> AutoreleasePoolPage(page);</span><br><span class="line">  &#125; <span class="keyword">while</span> (page-&gt;full());</span><br><span class="line"></span><br><span class="line">  setHotPage(page);</span><br><span class="line">  <span class="keyword">return</span> page-&gt;add(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码的大概意思是: 通过一个接一个的节点来寻找没有满的page。如果page满了就新建一个page。把新建的page设置为hotpage, 然后将autorelase对象存储page中。</p>
+<p>###第三种情况:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> __attribute__((noinline))</span><br><span class="line"><span class="function">id *<span class="title">autoreleaseNoPage</span><span class="params">(id obj)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">bool</span> pushExtraBoundary = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (haveEmptyPoolPlaceholder()) &#123;</span><br><span class="line">    pushExtraBoundary = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (obj != POOL_BOUNDARY  &amp;&amp;  DebugMissingPools) &#123;</span><br><span class="line">    <span class="comment">// We are pushing an object with no pool in place, </span></span><br><span class="line">    <span class="comment">// and no-pool debugging was requested by environment.</span></span><br><span class="line">    _objc_inform(<span class="string">"MISSING POOLS: (%p) Object %p of class %s "</span></span><br><span class="line">    <span class="string">"autoreleased with no pool in place - "</span></span><br><span class="line">    <span class="string">"objc_autoreleaseNoPool() to debug"</span>, </span><br><span class="line">    pthread_self(), (<span class="keyword">void</span>*)obj, object_getClassName(obj));</span><br><span class="line">    objc_autoreleaseNoPool(obj);</span><br><span class="line">    <span class="keyword">return</span> nil;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (obj == POOL_BOUNDARY  &amp;&amp;  !DebugPoolAllocation) &#123;</span><br><span class="line">    <span class="comment">// We are pushing a pool with no pool in place,</span></span><br><span class="line">    <span class="comment">// and alloc-per-pool debugging was not requested.</span></span><br><span class="line">    <span class="comment">// Install and return the empty pool placeholder.</span></span><br><span class="line">    <span class="keyword">return</span> setEmptyPoolPlaceholder();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  AutoreleasePoolPage *page = <span class="keyword">new</span> AutoreleasePoolPage(nil);</span><br><span class="line">  setHotPage(page);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (pushExtraBoundary) &#123;</span><br><span class="line">    page-&gt;add(POOL_BOUNDARY);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> page-&gt;add(obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码的意思是新建一个page，将page设置为hotpage，然后将autorelease对象存入page中。</p>
+<p>通过对<code>push</code>方法的分析，我们了解了 <code>AutoreleasePoolPage</code>是通过next指针来实现<code>autorelease</code>对象的存储.</p>
+<p><code>AutoreleasePoolPage</code>的初始状态是这样的</p>
+<p><img src="/2018/06/05/autoreleasePoll/autoreleasepoll1.png" alt></p>
+<p>加入一个<code>autorelease</code>对象</p>
+<p><img src="/2018/06/05/autoreleasePoll/autoreleasepoll2.png" alt></p>
+<h2 id="AutoreleasePoolPage如何释放对象"><a href="#AutoreleasePoolPage如何释放对象" class="headerlink" title="AutoreleasePoolPage如何释放对象"></a>AutoreleasePoolPage如何释放对象</h2><p>下面我们来看看objc_autoreleasePoolPop的过程.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span></span><br><span class="line">objc_autoreleasePoolPop(<span class="keyword">void</span> *ctxt)</span><br><span class="line">&#123;</span><br><span class="line">  AutoreleasePoolPage::pop(ctxt);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们知道objc_autoreleasePoolPop是通过AutoreleasePoolPage类的pop方法实现的. 传入的参数就是需要释放的AutoreleasePoolPage对象.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">(<span class="keyword">void</span> *token)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  AutoreleasePoolPage *page;</span><br><span class="line">  id *stop;</span><br><span class="line">  stop = (id *)token;</span><br><span class="line">  page-&gt;releaseUntil(stop);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们关注一下 <code>page-&gt;releaseUntil(stop);</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">releaseUntil</span><span class="params">(id *stop)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="keyword">this</span>-&gt;next != stop) &#123;</span><br><span class="line"></span><br><span class="line">    AutoreleasePoolPage *page = hotPage();</span><br><span class="line">    <span class="keyword">while</span> (page-&gt;empty()) &#123;</span><br><span class="line">      page = page-&gt;parent;</span><br><span class="line">      setHotPage(page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    page-&gt;unprotect();</span><br><span class="line">    id obj = *--page-&gt;next;</span><br><span class="line">    <span class="built_in">memset</span>((<span class="keyword">void</span>*)page-&gt;next, SCRIBBLE, <span class="keyword">sizeof</span>(*page-&gt;next));</span><br><span class="line">    page-&gt;protect();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (obj != POOL_BOUNDARY) &#123;</span><br><span class="line">      objc_release(obj);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  setHotPage(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码的意思是，从page中一个一个的对autorelase对象发送release消息。终止的临界条件是POOL_BOUNDARY.</p>
+<p><img src="/2018/06/05/autoreleasePoll/autoreleasepoll3.png" alt></p>
+<h2 id="POOL-BOUNDARY-哨兵对象-是什么"><a href="#POOL-BOUNDARY-哨兵对象-是什么" class="headerlink" title="POOL_BOUNDARY (哨兵对象)是什么"></a>POOL_BOUNDARY (哨兵对象)是什么</h2><p>我们知道<code>AutoreleasePoolPage</code>的类定义中有一段代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> POOL_BOUNDARY nil</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>AutoreleasePoolPage</code>调用<code>push</code>方法的时候，会把<code>POOL_BOUNDARY</code>放入自动自动释放池的栈顶.</p>
+</li>
+<li><p><code>AutoreleasePoolPage</code>调用<code>pop</code>方法的时候，会对realease对象发送消息直到<code>POOL_BOUNDARY</code>.</p>
+</li>
+</ul>
+<p>所以: <code>POOL_BOUNDARY</code>是每一次@autoreleasepoll{}的标记.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/06/05/autoreleasePoll/" data-id="cll91frg60000eu4mb49jkc7v" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-引用计数" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h2 class="article-title" itemprop="name">
+    <a href="/2018/05/05/%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0/">引用计数</a>
+  </h2>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/05/05/%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0/" class="article-date">
+  <time datetime="2018-05-05T03:10:32.000Z" itemprop="datePublished">2018-05-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <h2 id="苹果的引用计数"><a href="#苹果的引用计数" class="headerlink" title="苹果的引用计数"></a>苹果的引用计数</h2><p><img src="/2018/05/05/引用计数/appleRetainCount.png" alt></p>
+<h2 id="GUN的引用计数"><a href="#GUN的引用计数" class="headerlink" title="GUN的引用计数"></a>GUN的引用计数</h2><p><img src="/2018/05/05/引用计数/gunretainCount.png" alt></p>
+<p>分配内存<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">id</span>) alloc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> [<span class="keyword">self</span> allocWithZone: <span class="built_in">NSDefaultMallocZone</span>()];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>) allocWithZone: (<span class="built_in">NSZone</span>*)z</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">NSAllocateObject</span> (<span class="keyword">self</span>, <span class="number">0</span>, z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> obj_layout &#123;</span><br><span class="line">  <span class="keyword">char</span>	padding[__BIGGEST_ALIGNMENT__ - ((UNP % __BIGGEST_ALIGNMENT__)</span><br><span class="line">    ? (UNP % __BIGGEST_ALIGNMENT__) : __BIGGEST_ALIGNMENT__)];</span><br><span class="line">  gsrefcount_t	retained;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span>	<span class="keyword">struct</span> obj_layout *obj;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">id</span></span><br><span class="line"><span class="built_in">NSAllocateObject</span> (Class aClass, <span class="built_in">NSUInteger</span> extraBytes, <span class="built_in">NSZone</span> *zone)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">id</span>	new;</span><br><span class="line">  <span class="keyword">int</span>	size;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">NSCAssert</span>((!class_isMetaClass(aClass)), <span class="string">@"Bad class for new object"</span>);</span><br><span class="line">  size = class_getInstanceSize(aClass) + extraBytes + <span class="keyword">sizeof</span>(<span class="keyword">struct</span> obj_layout);</span><br><span class="line">  <span class="keyword">if</span> (zone == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      zone = <span class="built_in">NSDefaultMallocZone</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  new = <span class="built_in">NSZoneMalloc</span>(zone, size);</span><br><span class="line">  <span class="keyword">if</span> (new != <span class="literal">nil</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      memset (new, <span class="number">0</span>, size);</span><br><span class="line">      new = (<span class="keyword">id</span>)&amp;((obj)new)[<span class="number">1</span>];</span><br><span class="line">      object_setClass(new, aClass);</span><br><span class="line">      AADD(aClass, new);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Don't bother doing this in a thread-safe way, because the cost of locking</span></span><br><span class="line"><span class="comment">   * will be a lot more than the cost of doing the same call in two threads.</span></span><br><span class="line"><span class="comment">   * The returned selector will persist and the runtime will ensure that both</span></span><br><span class="line"><span class="comment">   * calls return the same selector, so we don't need to bother doing it</span></span><br><span class="line"><span class="comment">   * ourselves.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="number">0</span> == cxx_construct)</span><br><span class="line">    &#123;</span><br><span class="line">      cxx_construct = sel_registerName(<span class="string">".cxx_construct"</span>);</span><br><span class="line">      cxx_destruct = sel_registerName(<span class="string">".cxx_destruct"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  callCXXConstructors(aClass, new);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> new;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>retain操作<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) <span class="keyword">retain</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">self</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line"><span class="built_in">NSIncrementExtraRefCount</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span>	defined(GSATOMICREAD)</span></span><br><span class="line">  <span class="comment">/* I've seen comments saying that some platforms only support up to</span></span><br><span class="line"><span class="comment">   * 24 bits in atomic locking, so raise an exception if we try to</span></span><br><span class="line"><span class="comment">   * go beyond 0xfffffe.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span> (GSAtomicIncrement((gsatomic_t)&amp;(((obj)anObject)[<span class="number">-1</span>].retained))</span><br><span class="line">    &gt; <span class="number">0xfffffe</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      [<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span></span><br><span class="line">        format: <span class="string">@"NSIncrementExtraRefCount() asked to increment too far"</span>];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span>	<span class="comment">/* GSATOMICREAD */</span></span></span><br><span class="line">  <span class="built_in">NSLock</span> *theLock = GSAllocationLockForObject(anObject);</span><br><span class="line"></span><br><span class="line">  [theLock lock];</span><br><span class="line">  <span class="keyword">if</span> (((obj)anObject)[<span class="number">-1</span>].retained &gt; <span class="number">0xfffffe</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      [theLock unlock];</span><br><span class="line">      [<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span></span><br><span class="line">        format: <span class="string">@"NSIncrementExtraRefCount() asked to increment too far"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  ((obj)anObject)[<span class="number">-1</span>].retained++;</span><br><span class="line">  [theLock unlock];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	<span class="comment">/* GSATOMICREAD */</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>release操作<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">oneway</span> <span class="keyword">void</span>) release</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">NSDecrementExtraRefCountWasZero</span>(<span class="keyword">self</span>))</span><br><span class="line">    &#123;</span><br><span class="line"><span class="meta">#  <span class="meta-keyword">ifdef</span> OBJC_CAP_ARC</span></span><br><span class="line">      objc_delete_weak_refs(<span class="keyword">self</span>);</span><br><span class="line"><span class="meta">#  <span class="meta-keyword">endif</span></span></span><br><span class="line">      [<span class="keyword">self</span> dealloc];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="built_in">BOOL</span></span><br><span class="line"><span class="built_in">NSDecrementExtraRefCountWasZero</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (double_release_check_enabled)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">NSUInteger</span> release_count;</span><br><span class="line">      <span class="built_in">NSUInteger</span> retain_count = [anObject retainCount];</span><br><span class="line">      release_count = [autorelease_class autoreleaseCountForObject: anObject];</span><br><span class="line">      <span class="keyword">if</span> (release_count &gt;= retain_count)</span><br><span class="line">        [<span class="built_in">NSException</span> raise: <span class="built_in">NSGenericException</span></span><br><span class="line">		    format: <span class="string">@"Release would release object too many times."</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span>	defined(GSATOMICREAD)</span></span><br><span class="line">    gsrefcount_t	result;</span><br><span class="line"></span><br><span class="line">    result = GSAtomicDecrement((gsatomic_t)&amp;(((obj)anObject)[<span class="number">-1</span>].retained));</span><br><span class="line">    <span class="keyword">if</span> (result &lt; <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> (result != <span class="number">-1</span>)</span><br><span class="line">          &#123;</span><br><span class="line">            [<span class="built_in">NSException</span> raise: <span class="built_in">NSInternalInconsistencyException</span></span><br><span class="line">              format: <span class="string">@"NSDecrementExtraRefCount() decremented too far"</span>];</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="comment">/* The counter has become negative so it must have been zero.</span></span><br><span class="line"><span class="comment">         * We reset it and return YES ... in a correctly operating</span></span><br><span class="line"><span class="comment">         * process we know we can safely reset back to zero without</span></span><br><span class="line"><span class="comment">         * worrying about atomicity, since there can be no other</span></span><br><span class="line"><span class="comment">         * thread accessing the object (or its reference count would</span></span><br><span class="line"><span class="comment">         * have been greater than zero)</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        (((obj)anObject)[<span class="number">-1</span>].retained) = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span>	<span class="comment">/* GSATOMICREAD */</span></span></span><br><span class="line">    <span class="built_in">NSLock</span> *theLock = GSAllocationLockForObject(anObject);</span><br><span class="line"></span><br><span class="line">    [theLock lock];</span><br><span class="line">    <span class="keyword">if</span> (((obj)anObject)[<span class="number">-1</span>].retained == <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        [theLock unlock];</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        ((obj)anObject)[<span class="number">-1</span>].retained--;</span><br><span class="line">        [theLock unlock];</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	<span class="comment">/* GSATOMICREAD */</span></span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>autorelease操作<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">id</span>) autorelease</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (double_release_check_enabled)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">NSUInteger</span> release_count;</span><br><span class="line">      <span class="built_in">NSUInteger</span> retain_count = [<span class="keyword">self</span> retainCount];</span><br><span class="line">      release_count = [autorelease_class autoreleaseCountForObject:<span class="keyword">self</span>];</span><br><span class="line">      <span class="keyword">if</span> (release_count &gt; retain_count)</span><br><span class="line">        [<span class="built_in">NSException</span></span><br><span class="line">	  raise: <span class="built_in">NSGenericException</span></span><br><span class="line">	  format: <span class="string">@"Autorelease would release object too many times.\n"</span></span><br><span class="line">	  <span class="string">@"%"</span>PRIuPTR<span class="string">" release(s) versus %"</span>PRIuPTR<span class="string">" retain(s)"</span>,</span><br><span class="line">	  release_count, retain_count];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  (*autorelease_imp)(autorelease_class, autorelease_sel, <span class="keyword">self</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>获取引用计数<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSUInteger</span>) retainCount</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">NSExtraRefCount</span>(<span class="keyword">self</span>) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="built_in">NSUInteger</span></span><br><span class="line"><span class="built_in">NSExtraRefCount</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> ((obj)anObject)[<span class="number">-1</span>].retained;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对象释放<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span></span><br><span class="line"><span class="built_in">NSDeallocateObject</span>(<span class="keyword">id</span> anObject)</span><br><span class="line">&#123;</span><br><span class="line">  Class aClass = object_getClass(anObject);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((anObject != <span class="literal">nil</span>) &amp;&amp; !class_isMetaClass(aClass))</span><br><span class="line">    &#123;</span><br><span class="line">      obj	o = &amp;((obj)anObject)[<span class="number">-1</span>];</span><br><span class="line">      <span class="built_in">NSZone</span>	*z = <span class="built_in">NSZoneFromPointer</span>(o);</span><br><span class="line"></span><br><span class="line">      <span class="comment">/* Call the default finalizer to handle C++ destructors.</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">      (*finalize_imp)(anObject, finalize_sel);</span><br><span class="line"></span><br><span class="line">      AREM(aClass, (<span class="keyword">id</span>)anObject);</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">NSZombieEnabled</span> == <span class="literal">YES</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	  GSMakeZombie(anObject, aClass);</span><br><span class="line">	  <span class="keyword">if</span> (<span class="built_in">NSDeallocateZombies</span> == <span class="literal">YES</span>)</span><br><span class="line">	    &#123;</span><br><span class="line">	      <span class="built_in">NSZoneFree</span>(z, o);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">	  object_setClass((<span class="keyword">id</span>)anObject, (Class)(<span class="keyword">void</span>*)<span class="number">0xdeadface</span>);</span><br><span class="line">	  <span class="built_in">NSZoneFree</span>(z, o);</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/05/05/%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0/" data-id="cll91frgs000geu4mtwn5kx7u" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+  </nav>
+  
+</section>
+</div>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>sunner &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-bar-chart tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_site_pv"></span></li>
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="sunner"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>

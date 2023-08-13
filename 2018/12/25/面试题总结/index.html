@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <title>
+    面试题总结 |
+    
+    sunner
+  </title>
+  <!-- Icon -->
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 7.0.0-rc2"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-面试题总结" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+  <h1 class="article-title" itemprop="name">
+    面试题总结
+  </h1>
+  
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/12/25/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2018-12-25T02:05:02.000Z" itemprop="datePublished">2018-12-25</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+        <h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><h4 id="UIView和CALayer的关系？"><a href="#UIView和CALayer的关系？" class="headerlink" title="UIView和CALayer的关系？"></a>UIView和CALayer的关系？</h4><ul>
+<li>UIView为其提供内容，以及负责处理触摸等事件，参与响应链</li>
+<li>CALayer负责显示内容contents</li>
+<li>backing store  位图</li>
+<li>设计模式用到了单一职责原则</li>
+</ul>
+<h4 id="响应链？"><a href="#响应链？" class="headerlink" title="响应链？"></a>响应链？</h4><h4 id="离屏渲染？"><a href="#离屏渲染？" class="headerlink" title="离屏渲染？"></a>离屏渲染？</h4><h4 id="优化方案？"><a href="#优化方案？" class="headerlink" title="优化方案？"></a>优化方案？</h4><ul>
+<li>cpu: （减轻cpu负担，消耗任务放入子线程)</li>
+<li>对象创建 调整 销毁</li>
+<li>预排版（布局计算，文本计算）</li>
+<li>预渲染（文本等异步绘制，图片编解码等）</li>
+<li>gpu: </li>
+<li>纹理渲染 （避免离屏渲染）</li>
+<li>视图混合 （减轻视图混合）</li>
+</ul>
+<h2 id="oc语言"><a href="#oc语言" class="headerlink" title="oc语言"></a>oc语言</h2><h4 id="属性关键字都有哪些？"><a href="#属性关键字都有哪些？" class="headerlink" title="属性关键字都有哪些？"></a>属性关键字都有哪些？</h4><ul>
+<li>读写权限</li>
+<li>readonly </li>
+<li>readwrite 默认</li>
+<li>原子性</li>
+<li>atomic  默认</li>
+<li>nonatomic</li>
+<li>引用计数</li>
+<li>retain/strong</li>
+<li>assign/unsafe_unretained</li>
+<li>weak/copy</li>
+</ul>
+<h4 id="关键字的区别？"><a href="#关键字的区别？" class="headerlink" title="关键字的区别？"></a>关键字的区别？</h4><ul>
+<li>readonly : 修饰任何类型，仅仅生成get方法</li>
+<li>readwrite: 修饰任何类型，生成get方法，又生成set方法</li>
+<li>strong: 修饰对象类型. 强引用被修饰对象。</li>
+<li>weak: 修饰对象类型。弱引用被修饰对象，当被修饰对象释放的时候，weak修饰的对象指针会指向nil</li>
+<li>unsafe_unretained: (不safe不retain): 修饰对象类型。弱引用被修饰对象。与weak相似。区别在于:当被修饰对象释放的时候，weak修饰的对象指针不会指向nil,会造成野指针。</li>
+<li>copy: 修饰不可变对象类型。强引用被修饰对象。</li>
+</ul>
+<h4 id="atomic修饰的属性线程安全吗？"><a href="#atomic修饰的属性线程安全吗？" class="headerlink" title="atomic修饰的属性线程安全吗？"></a>atomic修饰的属性线程安全吗？</h4><ul>
+<li>atomic只是保证修饰的对象是线程安全，但不保证对象的操作线程安全</li>
+<li>比如数组，保证设置数组和获取数组是线程安全，但不保证数组移除添加操作是线程安全</li>
+</ul>
+<h4 id="assign-vs-weak"><a href="#assign-vs-weak" class="headerlink" title="assign vs weak?"></a>assign vs weak?</h4><ul>
+<li>assign: </li>
+<li>修饰基本数据类型，如int</li>
+<li>修饰对象类型，不改变其引用技术</li>
+<li>修饰对象不会自动设置为nil，会产生悬垂指针，产生野指针</li>
+<li>weak</li>
+<li>只能修饰对象</li>
+<li>不改变被修饰对象的引用技术</li>
+<li>修饰的对象被释放后，不会自动设置为nil</li>
+</ul>
+<h4 id="weak属性需要在dealloc中置nil么？"><a href="#weak属性需要在dealloc中置nil么？" class="headerlink" title="weak属性需要在dealloc中置nil么？"></a>weak属性需要在dealloc中置nil么？</h4><p>不需要， weak会自动置nil</p>
+<h4 id="synthesize和-dynamic分别有什么作用？"><a href="#synthesize和-dynamic分别有什么作用？" class="headerlink" title="@synthesize和@dynamic分别有什么作用？"></a>@synthesize和@dynamic分别有什么作用？</h4><ul>
+<li>@synthesize自动合成set get ivar</li>
+<li>@dynamic 不生成 set get</li>
+</ul>
+<h4 id="ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？"><a href="#ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？" class="headerlink" title="ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？"></a>ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？</h4><p>readwrite atomic retain</p>
+<h4 id="用-property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？"><a href="#用-property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？" class="headerlink" title="用@property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？"></a>用@property声明的NSString（或NSArray，NSDictionary）经常使用copy关键字，为什么？如果改用strong关键字，可能造成什么问题？</h4><ul>
+<li>使用copy 保证对象的本质不会被破坏，依然是不可变类型</li>
+<li>使用strong， 有可能本质变为可变类型。破坏本质, 有可能会发生方法无法找到，会crash</li>
+</ul>
+<h4 id="synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为-foo的实例变量，那么还会自动合成新变量么？"><a href="#synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为-foo的实例变量，那么还会自动合成新变量么？" class="headerlink" title="@synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为_foo的实例变量，那么还会自动合成新变量么？"></a>@synthesize合成实例变量的规则是什么？假如property名为foo，存在一个名为_foo的实例变量，那么还会自动合成新变量么？</h4><ul>
+<li>会生成_开头的变量</li>
+<li>不会自动合成新的变量</li>
+</ul>
+<h4 id="在有了自动合成属性实例变量之后，-synthesize还有哪些使用场景？"><a href="#在有了自动合成属性实例变量之后，-synthesize还有哪些使用场景？" class="headerlink" title="在有了自动合成属性实例变量之后，@synthesize还有哪些使用场景？"></a>在有了自动合成属性实例变量之后，@synthesize还有哪些使用场景？</h4><ul>
+<li>synthesize name = _helloname</li>
+<li>可以更改自动合成变量的名称</li>
+</ul>
+<h4 id="objc中向一个nil对象发送消息将会发生什么？"><a href="#objc中向一个nil对象发送消息将会发生什么？" class="headerlink" title="objc中向一个nil对象发送消息将会发生什么？"></a>objc中向一个nil对象发送消息将会发生什么？</h4><p>没有任何反应</p>
+<h4 id="通知和代理的区别？"><a href="#通知和代理的区别？" class="headerlink" title="通知和代理的区别？"></a>通知和代理的区别？</h4><ul>
+<li>通知</li>
+<li>是使用观察者模式来实现的用于跨层传递消息的机制</li>
+<li>传递方式是一对多的</li>
+<li>代理</li>
+<li>准确的说是一种软件设计模式，iOS当中以@protocol形式体现</li>
+<li>传递方式一对一</li>
+</ul>
+<h4 id="通知如何实现一对多？"><a href="#通知如何实现一对多？" class="headerlink" title="通知如何实现一对多？"></a>通知如何实现一对多？</h4><h4 id="如何实现通知机制？"><a href="#如何实现通知机制？" class="headerlink" title="如何实现通知机制？"></a>如何实现通知机制？</h4><h4 id="代理的工作流程？"><a href="#代理的工作流程？" class="headerlink" title="代理的工作流程？"></a>代理的工作流程？</h4><h4 id="什么是kvo？"><a href="#什么是kvo？" class="headerlink" title="什么是kvo？"></a>什么是kvo？</h4><ul>
+<li>kvo是key-value observing的缩写</li>
+<li>kvo是objective-c对观察者模式的又一实现</li>
+<li>apple使用了isa混写（isa-swizzling）来实现kvo</li>
+</ul>
+<h4 id="kvo如何实现isa-swizzling"><a href="#kvo如何实现isa-swizzling" class="headerlink" title="kvo如何实现isa-swizzling?"></a>kvo如何实现isa-swizzling?</h4><ul>
+<li>生成NSKVONotifying_A类</li>
+<li>重写set方法</li>
+</ul>
+<h4 id="通过kvc设置value，kvo能否生效？"><a href="#通过kvc设置value，kvo能否生效？" class="headerlink" title="通过kvc设置value，kvo能否生效？"></a>通过kvc设置value，kvo能否生效？</h4><p>最终会调用value的set方法，可以生效</p>
+<h4 id="通过成员变量直接赋值value能否生效？"><a href="#通过成员变量直接赋值value能否生效？" class="headerlink" title="通过成员变量直接赋值value能否生效？"></a>通过成员变量直接赋值value能否生效？</h4><p>不能</p>
+<h4 id="手动kvo？"><a href="#手动kvo？" class="headerlink" title="手动kvo？"></a>手动kvo？</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)willChangeValueForKey:(<span class="built_in">NSString</span> *)key</span><br><span class="line">····</span><br><span class="line">- (<span class="keyword">void</span>)didChangeValueForKey:(<span class="built_in">NSString</span> *)key</span><br></pre></td></tr></table></figure>
+<h4 id="什么是kvc？"><a href="#什么是kvc？" class="headerlink" title="什么是kvc？"></a>什么是kvc？</h4><ul>
+<li>kvc是key-value coding的缩写</li>
+<li>键值编码技术</li>
+<li><ul>
+<li>(id)valueForKey:(NSString *)key</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)setValue:(id)value forKey:(NSString *)key</li>
+</ul>
+</li>
+</ul>
+<h4 id="键值编码技术是否会违背面向对象的编程思想？"><a href="#键值编码技术是否会违背面向对象的编程思想？" class="headerlink" title="键值编码技术是否会违背面向对象的编程思想？"></a>键值编码技术是否会违背面向对象的编程思想？</h4><p>yes</p>
+<h4 id="分类的加载调用栈？"><a href="#分类的加载调用栈？" class="headerlink" title="分类的加载调用栈？"></a>分类的加载调用栈？</h4><p>分类添加的方法可以‘覆盖‘原类方法（其实不是覆盖，在方法列表中，分类方法的位置位于原类方法的位置的前面）<br>同名分类方法谁能生效取决于编译顺序，最后编译的分类会覆盖掉前面编译的分类<br>名字相同的分类会引起编译报错</p>
+<h4 id="分类和扩展的区别？"><a href="#分类和扩展的区别？" class="headerlink" title="分类和扩展的区别？"></a>分类和扩展的区别？</h4><ul>
+<li>扩展是编译时决议 </li>
+<li>分类是运行时决议</li>
+<li>扩展只以声明的形式存在，扩展的实现写在宿主类当中，多数情况下寄生于宿主类的.m中</li>
+<li>分类有声明，有实现</li>
+<li>不能为系统类添加扩展</li>
+<li>可以为系统类添加分类</li>
+</ul>
+<h4 id="关联对象？"><a href="#关联对象？" class="headerlink" title="关联对象？"></a>关联对象？</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">id</span> objc_getAssociatedObject(<span class="keyword">id</span> object, <span class="keyword">const</span> <span class="keyword">void</span> * key)</span><br><span class="line"><span class="keyword">void</span> objc_setAssociatedObject(<span class="keyword">id</span> object, <span class="keyword">const</span> <span class="keyword">void</span> * key, <span class="keyword">id</span> value, objc_AssociationPolicy policy)</span><br><span class="line"><span class="keyword">void</span> objc_removeAssociatedObjects(<span class="keyword">id</span> object)</span><br></pre></td></tr></table></figure>
+<h4 id="关联对象本质？"><a href="#关联对象本质？" class="headerlink" title="关联对象本质？"></a>关联对象本质？</h4><ul>
+<li>关联对象由 AssociationsManager 管理并在 AssociationsHashMap 存储.</li>
+<li>所有对象的关联内容都在同一个全局容器中</li>
+</ul>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h4 id="iOS中，提供了哪几种多线程技术方案？"><a href="#iOS中，提供了哪几种多线程技术方案？" class="headerlink" title="iOS中，提供了哪几种多线程技术方案？"></a>iOS中，提供了哪几种多线程技术方案？</h4><ul>
+<li>gcd</li>
+<li>NSOperation</li>
+<li>nsthread</li>
+</ul>
+<h4 id="同步-异步-串行-并法-？"><a href="#同步-异步-串行-并法-？" class="headerlink" title="同步/异步 串行/并法 ？"></a>同步/异步 串行/并法 ？</h4><ul>
+<li>disaptch_sync(serial_queue, ^{任务})</li>
+<li>disaptch_async(serial_queue, ^{任务})</li>
+<li>disaptch_sync(concurrent_queue, ^{任务})</li>
+<li>disaptch_async(oncurrent_queue, ^{任务})</li>
+</ul>
+<h4 id="dispatch-sync-dispatch-get-main-queue-任务-有什么问题？"><a href="#dispatch-sync-dispatch-get-main-queue-任务-有什么问题？" class="headerlink" title="dispatch_sync(dispatch_get_main_queue(), ^{任务}); 有什么问题？"></a>dispatch_sync(dispatch_get_main_queue(), ^{任务}); 有什么问题？</h4><ul>
+<li>死锁  </li>
+<li>队列引起的循环等待</li>
+</ul>
+<h4 id="怎样利用gcd实现多读单写？"><a href="#怎样利用gcd实现多读单写？" class="headerlink" title="怎样利用gcd实现多读单写？"></a>怎样利用gcd实现多读单写？</h4><ul>
+<li>dispatch_barricer_async</li>
+</ul>
+<h4 id="NSOperation需要和NSOperationQueue配合使用来实现多线程方案"><a href="#NSOperation需要和NSOperationQueue配合使用来实现多线程方案" class="headerlink" title="NSOperation需要和NSOperationQueue配合使用来实现多线程方案"></a>NSOperation需要和NSOperationQueue配合使用来实现多线程方案</h4><ul>
+<li>添加任务依赖</li>
+<li>任务执行状态控制</li>
+<li>最大并发量</li>
+</ul>
+<h4 id="我们可以控制NSOperation的哪些状态？"><a href="#我们可以控制NSOperation的哪些状态？" class="headerlink" title="我们可以控制NSOperation的哪些状态？"></a>我们可以控制NSOperation的哪些状态？</h4><ul>
+<li>isReady</li>
+<li>isExecuting</li>
+<li>isFinished</li>
+<li><p>isCancelled</p>
+</li>
+<li><p>如果仅仅重写了main方法， 底层控制变更任务执行状态，以及任务退出</p>
+</li>
+<li>如果重写了start方法以及main方法，需要在start方法中自行控制任务状态</li>
+</ul>
+<h4 id="NSthread考点？"><a href="#NSthread考点？" class="headerlink" title="NSthread考点？"></a>NSthread考点？</h4><ul>
+<li>一般会和runloop一起考察常驻线程</li>
+</ul>
+<h4 id="iOS中有哪些锁？"><a href="#iOS中有哪些锁？" class="headerlink" title="iOS中有哪些锁？"></a>iOS中有哪些锁？</h4><ul>
+<li>@synchronized</li>
+<li>atomic</li>
+<li>OSSpinLock</li>
+<li>NSLock</li>
+<li>RecursiveLock</li>
+</ul>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h4 id="内存管理原则？"><a href="#内存管理原则？" class="headerlink" title="内存管理原则？"></a>内存管理原则？</h4><ul>
+<li><ol>
+<li>alloc/new/copy/mutablecopy开头的方法，生成并持有对象。 引用计数+1</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>retain 持有对象， 引用计数+1</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>release 释放对象， 引用计数-1</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>dealloc 废弃对象。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>自己持有的对象，自己可以释放</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>非自己持有的对象， 自己不能释放</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>非自己生成的对象，自己也可以持有(通过retain)</li>
+</ol>
+</li>
+</ul>
+<h4 id="cf的内存管理？"><a href="#cf的内存管理？" class="headerlink" title="cf的内存管理？"></a>cf的内存管理？</h4><p>当遇到create和copy开的方法时候，成对出现的一定有release方法</p>
+<h4 id="autorealsepoll-的实现原理？"><a href="#autorealsepoll-的实现原理？" class="headerlink" title="@autorealsepoll{}的实现原理？"></a>@autorealsepoll{}的实现原理？</h4><ul>
+<li>autoreleasepoll是有一个AutorelesePage类来管理的。</li>
+<li>AutorelesePage是一个双向链表，通过parent和child来实现</li>
+<li>AutorelesePage是通过游标next来存储autorelease对象的</li>
+<li>@autorelesepoll{}大括号开始的时候，会调用AutorelesePage的push方法.</li>
+<li>@autorelesepoll{}大括号结束的时候，会调用AutorelesePage的pop方法.<h4 id="哨兵对象是什么？"><a href="#哨兵对象是什么？" class="headerlink" title="哨兵对象是什么？"></a>哨兵对象是什么？</h4></li>
+<li>在{的时候，会push进去一个哨兵对象，压入栈顶。返回哨兵对象</li>
+<li>在}的时候，会传入哨兵对象给pop方法，依次弹出autorelease，并发送release消息。直到哨兵对象</li>
+<li>relasepoll的释放是在每一次runloop迭代结束的时候释放的。</li>
+<li>一个relasepoll对象一个线程</li>
+<li>一个线程对应一个AutorelesePage链表。（可能有多页）</li>
+</ul>
+<h4 id="如何保证嵌套pool的正确管理？"><a href="#如何保证嵌套pool的正确管理？" class="headerlink" title="如何保证嵌套pool的正确管理？"></a>如何保证嵌套pool的正确管理？</h4><p>每次push会传入哨兵对象，每次pop会释放对象直到哨兵对象。所以可以正确管理</p>
+<h4 id="arc如何实现weak？"><a href="#arc如何实现weak？" class="headerlink" title="arc如何实现weak？"></a>arc如何实现weak？</h4><ul>
+<li>通过sidetable</li>
+<li>sidetables是一个hash表，key:obj value:sidetable</li>
+<li>sidetable中变量 ref, enties;</li>
+<li>ref : 管理引用计数 map -&gt; 使用了分离锁的思想。</li>
+<li>enties 数组: 存储了执行obj对象的所有weak指针的地址</li>
+</ul>
+<h4 id="cf对象转化为oc对象，内存如何管理？"><a href="#cf对象转化为oc对象，内存如何管理？" class="headerlink" title="cf对象转化为oc对象，内存如何管理？"></a>cf对象转化为oc对象，内存如何管理？</h4><ul>
+<li>brige: oc对象保持引用。cf不保持引用</li>
+<li>brige_retain: oc对象保持引用。 cf保持引用</li>
+<li>brige_transfor : oc对象不保持引用。 cf保持引用</li>
+</ul>
+<h2 id="block"><a href="#block" class="headerlink" title="block"></a>block</h2><h4 id="block的本质？"><a href="#block的本质？" class="headerlink" title="block的本质？"></a>block的本质？</h4><p>block本质是一个指向结构体的指针,结构体中包含了代码块函数的指针，以及对block描述的结构体指针。执行block的时候，block拿到代码块函数的地址，然后传入block自身，进行执行。</p>
+<h4 id="block如果更改外部变量？"><a href="#block如果更改外部变量？" class="headerlink" title="block如果更改外部变量？"></a>block如果更改外部变量？</h4><p>使用<strong>block, 通过</strong>block,外部变量会被包装成一个结构体,结构体中包含外部变量的地址，外部变量结构体的地址会被传入block的结构体中，执行block的时候，block拿到代码块，然后传入block自身，以及外部变量结构体指针，进行执行。</p>
+<h4 id="注意点？"><a href="#注意点？" class="headerlink" title="注意点？"></a>注意点？</h4><p>block中一定要注意循环引用，当block中的代码块中强引用了一个self，self又强引用了block，就会造成循环引用，解决方法是使用weak指针。</p>
+<h4 id="UIView动画为什么不用考虑循环引用？"><a href="#UIView动画为什么不用考虑循环引用？" class="headerlink" title="UIView动画为什么不用考虑循环引用？"></a>UIView动画为什么不用考虑循环引用？</h4><p>因为没有造成互相引用， UIView的+方法，虽然强引用了self，但是self并没有强引用UIView。</p>
+<h2 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h2><h4 id="runtime的使用场景？"><a href="#runtime的使用场景？" class="headerlink" title="runtime的使用场景？"></a>runtime的使用场景？</h4><ul>
+<li>method swizzling</li>
+<li>使用关联对象在分类中添加属性</li>
+<li>字典转模型, 模型转字典</li>
+</ul>
+<h4 id="objc中向一个对象发送消息-obj-foo-和objc-msgSend-函数之间有什么关系？"><a href="#objc中向一个对象发送消息-obj-foo-和objc-msgSend-函数之间有什么关系？" class="headerlink" title="objc中向一个对象发送消息[obj foo]和objc_msgSend()函数之间有什么关系？"></a>objc中向一个对象发送消息[obj foo]和objc_msgSend()函数之间有什么关系？</h4><ul>
+<li>objc_msgSend(obj, @selector(foo))</li>
+</ul>
+<h4 id="什么时候会报unrecognized-selector的异常？"><a href="#什么时候会报unrecognized-selector的异常？" class="headerlink" title="什么时候会报unrecognized selector的异常？"></a>什么时候会报unrecognized selector的异常？</h4><ul>
+<li><ol>
+<li>根据sel查找imp</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>如果找不到, 进入resolveinstancemethod ， 增加方法 addMethod</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>如果没有增加方法，进入 快速消息转发 forwarding target , 返回需要转发给的哪个类</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>如果没有， 进入慢消息转发</li>
+</ol>
+</li>
+<li>4.1 methodSignature 方法签名</li>
+<li>4.2 forwading invocation</li>
+</ul>
+<h4 id="为什么oc可以做到method-swizzling？"><a href="#为什么oc可以做到method-swizzling？" class="headerlink" title="为什么oc可以做到method-swizzling？"></a>为什么oc可以做到method-swizzling？</h4><ul>
+<li>oc是一门动态语言，不是静态语言，动态语言在编译期间无法确定被调用的方法是哪一个，只有在运行期间动态查找。</li>
+<li><ul>
+<li>方法,通过objc_object中的isa找到objc_class类型的类对象class，在class中先查cache，后查方法列表，如果找不到，就使用class中super指针继续父类查找。</li>
+</ul>
+</li>
+<li><ul>
+<li>方法,通过class中的isa找到objc_class类型的原类对象meta class，在meta class中先查cache，后查方法列表，如果找不到，就使用meta class中super指针继续父类查找。</li>
+</ul>
+</li>
+<li>如果依然查找不到，进入方法转发 </li>
+<li><ul>
+<li>(BOOL)resolveClassMethod:(SEL)sel  <font color="#0099ff">(或者+ (BOOL)resolveInstanceMethod:(SEL)sel)</font></li>
+</ul>
+</li>
+<li><ul>
+<li>(id)forwardingTargetForSelector:(SEL)aSelector</li>
+</ul>
+</li>
+<li><ul>
+<li>(NSMethodSignature <em>)methodSignatureForSelector:(SEL)aSelector <font color="#0099ff">(或者 + (NSMethodSignature </font></em>)instanceMethodSignatureForSelector:(SEL)aSelector), 然后 - (void)forwardInvocation:(NSInvocation *)anInvocation</li>
+</ul>
+</li>
+<li><ul>
+<li>(void)doesNotRecognizeSelector:(SEL)aSelector</li>
+</ul>
+</li>
+</ul>
+<h4 id="如果是c语言，如果实现方法替换？"><a href="#如果是c语言，如果实现方法替换？" class="headerlink" title="如果是c语言，如果实现方法替换？"></a>如果是c语言，如果实现方法替换？</h4><p>c语言是静态语言，无法实现</p>
+<h2 id="runloop"><a href="#runloop" class="headerlink" title="runloop"></a>runloop</h2><h4 id="runloop的使用场景？"><a href="#runloop的使用场景？" class="headerlink" title="runloop的使用场景？"></a>runloop的使用场景？</h4><ul>
+<li>常驻线程</li>
+<li>自动释放池</li>
+<li>NSTimer模式</li>
+</ul>
+<h2 id="第三方框架"><a href="#第三方框架" class="headerlink" title="第三方框架"></a>第三方框架</h2><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h4 id="设计原则？"><a href="#设计原则？" class="headerlink" title="设计原则？"></a>设计原则？</h4><ul>
+<li>单一职责原则</li>
+<li>依赖倒置原则</li>
+<li>开闭原则对修改关闭，对扩展开放</li>
+<li>里氏替换原则</li>
+<li>接口隔离原则</li>
+<li>迪米特法则</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.com/2018/12/25/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" data-id="cll91frgt000heu4myhbwx9t7" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  
+  <a href="/2018/12/12/block/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">block</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>sunner &copy; 2023</li>
+      
+        <li>
+          
+            <a href="https://beian.miit.gov.cn/" target="_blank"></a>
+            
+        </li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <p><ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt tooltip" data-tooltip="UV"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark tooltip" data-tooltip="PV"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul></p>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="sunner"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+
+</html>
